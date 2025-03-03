@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class MenuManager : MonoBehaviour
     public static MenuManager Instance;
 
     public Slider volumeSlider;
+
+    [SerializeField] private AudioMixer audioMixer;
 
     private void Awake()
     {
@@ -44,9 +47,11 @@ public class MenuManager : MonoBehaviour
     public void LoadVolume()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        audioMixer.SetFloat("MasterVol", ((100 * volumeSlider.value) - 80f));
     }
     public void SaveVolume()
     {
         PlayerPrefs.SetFloat("masterVolume", volumeSlider.value);
+        audioMixer.SetFloat("MasterVol", ((100 * volumeSlider.value) -80f));
     }
 }

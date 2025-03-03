@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 355522228}
   - component: {fileID: 355522227}
   - component: {fileID: 355522229}
+  - component: {fileID: 355522230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -607,6 +608,14 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!81 &355522230
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355522225}
+  m_Enabled: 1
 --- !u!1 &492035009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1175,7 @@ AudioSource:
   m_GameObject: {fileID: 695555860}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a0150abf26fccc44f900a21cc9e04aa2, type: 2}
   m_audioClip: {fileID: 8300000, guid: da396e758ee3c704387a56d23d0810a2, type: 3}
   m_Resource: {fileID: 8300000, guid: da396e758ee3c704387a56d23d0810a2, type: 3}
   m_PlayOnAwake: 1
@@ -3374,7 +3383,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1837294486}
   - component: {fileID: 1837294485}
-  - component: {fileID: 1837294487}
   m_Layer: 0
   m_Name: Menu Manager
   m_TagString: Untagged
@@ -3395,6 +3403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 846196213}
+  audioMixer: {fileID: 24100000, guid: a0150abf26fccc44f900a21cc9e04aa2, type: 2}
 --- !u!4 &1837294486
 Transform:
   m_ObjectHideFlags: 0
@@ -3410,14 +3419,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1837294487
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837294484}
-  m_Enabled: 1
 --- !u!1001 &1961815036
 PrefabInstance:
   m_ObjectHideFlags: 0
