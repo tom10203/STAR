@@ -47,6 +47,7 @@ public class RobotEnemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("Enemy got hit for " + damage + " damage");
         health -= damage;
     }
 }

@@ -54,22 +54,24 @@ public class PlayerShooting : MonoBehaviour
 
                 /////Added by Robert
                 Renderer rend = hit.transform.GetComponent<Renderer>();
-                Texture2D tex = rend.material.mainTexture as Texture2D;
-                if (tex != null)
+                if (rend != null)
                 {
-                    var xInTex = (int)(hit.textureCoord.x * tex.width);
-                    var yInTex = (int)(hit.textureCoord.y * tex.height);
-                    var pixel = tex.GetPixel(xInTex, yInTex);
-                    if (pixel.a > 0)
+                    Texture2D tex = rend.material.mainTexture as Texture2D;
+                    if (tex != null)
                     {
-                        if (hit.collider.CompareTag("Target"))
+                        var xInTex = (int)(hit.textureCoord.x * tex.width);
+                        var yInTex = (int)(hit.textureCoord.y * tex.height);
+                        var pixel = tex.GetPixel(xInTex, yInTex);
+                        if (pixel.a > 0)
                         {
-                            Target target = hit.collider.GetComponent<Target>();
-                            target.TargetHit();
+                            if (hit.collider.CompareTag("Target"))
+                            {
+                                Target target = hit.collider.GetComponent<Target>();
+                                target.TargetHit();
+                            }
                         }
                     }
                 }
-
                 if (hit.collider.CompareTag("Enemy"))
                 {
                     RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();

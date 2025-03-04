@@ -7,9 +7,9 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float gravity = -9.8f;
-    [SerializeField] float rotationSpeed = 100f;
-    [SerializeField] float mouseSensitivityX = 10f;
-    [SerializeField] float maxRotationX = 30f;
+    [SerializeField] float rotationSpeed = 400f;
+    [SerializeField] float mouseSensitivityX = 0.5f;
+    [SerializeField] float maxRotationX = 85f;
     [SerializeField] int health = 10;
 
     [SerializeField] KeyCode jumpButton = KeyCode.Space;
@@ -40,8 +40,8 @@ public class PlayerController2 : MonoBehaviour
 
         float y = transform.eulerAngles.y;
 
-        y += horizontalInput * rotationSpeed * Time.deltaTime;
-        x += -verticalInput * rotationSpeed * Time.deltaTime;
+        y += horizontalInput * rotationSpeed * mouseSensitivityX * Time.deltaTime;
+        x += -verticalInput * rotationSpeed * mouseSensitivityX * Time.deltaTime;
 
         x = Mathf.Clamp(x, -maxRotationX, maxRotationX);
 
@@ -79,7 +79,8 @@ public class PlayerController2 : MonoBehaviour
     }
 
     public void TakeDamage(int damage)
-    {
+    {   
+        Debug.Log("Player got hit for " + damage + " damage");
         health -= damage;
     }
 }
