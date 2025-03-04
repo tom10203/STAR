@@ -353,7 +353,7 @@ MonoBehaviour:
   attackDamping: 0.5
   decayDamping: 0.3
   walkStrength: 1
-  slideStrength: 2
+  slideStrength: 0.2
   strengthResponse: 5
 --- !u!1 &4149934689084049886
 GameObject:
