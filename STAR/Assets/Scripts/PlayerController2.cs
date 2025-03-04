@@ -10,6 +10,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float mouseSensitivityX = 10f;
     [SerializeField] float maxRotationX = 30f;
+    [SerializeField] int health = 10;
 
     [SerializeField] KeyCode jumpButton = KeyCode.Space;
 
@@ -75,5 +76,10 @@ public class PlayerController2 : MonoBehaviour
         direction.y = y;
 
         characterController.Move(direction * Time.deltaTime);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }
