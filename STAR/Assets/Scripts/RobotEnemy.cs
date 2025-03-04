@@ -7,7 +7,7 @@ public class RobotEnemy : MonoBehaviour
     private PlayerController player;
     private float searchTime = 1f;
     private float searchTimer = 1f;
-    private int health = 100;
+    private int health = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

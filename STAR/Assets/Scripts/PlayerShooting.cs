@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using static UnityEngine.GraphicsBuffer;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
@@ -50,6 +51,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (Physics.Raycast(rayOrigin, playerCam.transform.forward, out hit, range))
             {
                 _lr.SetPosition(1, hit.point);
+
+                if (hit.collider.CompareTag("Target"))
+                {
+                    Target target = hit.collider.GetComponent<Target>();
+                    target.TargetHit();
+                }
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
+                    if(robotEnemy != null)
+                    {
+                        robotEnemy.TakeDamage(gunDamage);
+                    }
+                }
             }
             else
             {

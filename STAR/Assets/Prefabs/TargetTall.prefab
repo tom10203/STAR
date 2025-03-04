@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 8303139850152931972}
   m_Layer: 0
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
