@@ -8,11 +8,14 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
 
+    [Header("Volume")]
     public Slider volumeSlider; 
     public Slider musicVolumeSlider;
     public Slider sfxVolumeSlider;
-
     [SerializeField] private AudioMixer audioMixer;
+
+    [Header("Mouse Sensitivity")]
+    public Slider mouseSlider;
 
     private void Awake()
     {
@@ -25,6 +28,7 @@ public class MenuManager : MonoBehaviour
     }
     void Start()
     {
+        #region Volume Initialise
         if (!PlayerPrefs.HasKey("masterVolume"))
         {
             PlayerPrefs.SetFloat("masterVolume", 0.8f);
@@ -38,17 +42,21 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetFloat("sfxVolume", 0.8f);
         }
         LoadVolume();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        #endregion
+        #region Mouse Sensitivity Initialise
+        if (!PlayerPrefs.HasKey("mouseSensitivity"))
+        {
+            PlayerPrefs.SetFloat("mouseSensitivity", 0.5f); //just using template values here for now, feel free to change this and the slider settings in the inspector based on how it feels in-game
+        }
+        LoadMouse();
+        #endregion
     }
     public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
+
+    #region Volume Functions
     public void ChangeVolume()
     {
         SaveVolume();
@@ -71,4 +79,19 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("sfxVolume", sfxVolumeSlider.value);
         audioMixer.SetFloat("SFXVol", ((100 * sfxVolumeSlider.value) - 80f));
     }
+    #endregion
+    #region Mouse Sensitivity Functions
+    public void ChangeMouse()
+    {
+        SaveMouse();
+    }
+    public void LoadMouse()
+    {
+        mouseSlider.value = PlayerPrefs.GetFloat("mouseSensitivity");
+    }
+    public void SaveMouse()
+    {
+        PlayerPrefs.SetFloat("mouseSensitivity", mouseSlider.value);
+    }
+    #endregion
 }
