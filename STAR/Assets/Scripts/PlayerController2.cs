@@ -14,6 +14,8 @@ public class PlayerController2 : MonoBehaviour
 
     [SerializeField] KeyCode jumpButton = KeyCode.Space;
 
+    private float x = 0;
+
     CharacterController characterController;
     Vector3 direction;
 
@@ -37,16 +39,14 @@ public class PlayerController2 : MonoBehaviour
         float verticalInput = Input.GetAxis("Mouse Y");
 
         float y = transform.eulerAngles.y;
-        float x = cam.transform.eulerAngles.x;
 
         y += horizontalInput * rotationSpeed * Time.deltaTime;
-        x -= verticalInput * rotationSpeed * Time.deltaTime;
+        x += -verticalInput * rotationSpeed * Time.deltaTime;
 
         x = Mathf.Clamp(x, -maxRotationX, maxRotationX);
 
         transform.eulerAngles = new Vector3(0, y, 0);
-        cam.transform.localEulerAngles = new Vector3(x, 0, 0);
-        
+        cam.transform.localRotation = Quaternion.Euler(x, 0, 0);
     }
 
     private void Move()
