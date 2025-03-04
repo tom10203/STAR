@@ -4,28 +4,36 @@ using UnityEngine.AI;
 public class RobotEnemy : MonoBehaviour
 {
     [SerializeField] NavMeshAgent navAgent;
-    private PlayerController player;
+    private PlayerController2 player;
     private float searchTime = 1f;
     private float searchTimer = 1f;
     private int health = 3;
+    private int damageAmount = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindFirstObjectByType<PlayerController>();
+        player = GameObject.FindFirstObjectByType<PlayerController2>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (searchTimer < searchTime)
+        if (health > 0)
         {
-            searchTimer += Time.deltaTime;
+            if (searchTimer < searchTime)
+            {
+                searchTimer += Time.deltaTime;
+            }
+            else
+            {
+                searchTimer = 0f;
+                navAgent.SetDestination(player.transform.position);
+            }
         }
         else
         {
-            searchTimer = 0f;
-            navAgent.SetDestination(player.transform.position);
+            //Die
         }
     }
 
@@ -33,7 +41,7 @@ public class RobotEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            //ToDo - player take damage
+            player.TakeDamage(damageAmount);
         }
     }
 
