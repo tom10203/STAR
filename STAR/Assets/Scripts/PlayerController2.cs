@@ -7,12 +7,14 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float gravity = -9.8f;
-    [SerializeField] float rotationSpeed = 100f;
-    [SerializeField] float mouseSensitivityX = 10f;
-    [SerializeField] float maxRotationX = 30f;
+    [SerializeField] float rotationSpeed = 400f;
+    [SerializeField] float mouseSensitivityX = 0.5f;
+    [SerializeField] float maxRotationX = 85f;
     [SerializeField] int health = 10;
 
     [SerializeField] KeyCode jumpButton = KeyCode.Space;
+
+    private float x = 0;
 
     CharacterController characterController;
     Vector3 direction;
@@ -37,16 +39,14 @@ public class PlayerController2 : MonoBehaviour
         float verticalInput = Input.GetAxis("Mouse Y");
 
         float y = transform.eulerAngles.y;
-        float x = cam.transform.eulerAngles.x;
 
-        y += horizontalInput * rotationSpeed * Time.deltaTime;
-        x -= verticalInput * rotationSpeed * Time.deltaTime;
+        y += horizontalInput * rotationSpeed * mouseSensitivityX * Time.deltaTime;
+        x += -verticalInput * rotationSpeed * mouseSensitivityX * Time.deltaTime;
 
         x = Mathf.Clamp(x, -maxRotationX, maxRotationX);
 
         transform.eulerAngles = new Vector3(0, y, 0);
-        cam.transform.localEulerAngles = new Vector3(x, 0, 0);
-        
+        cam.transform.localRotation = Quaternion.Euler(x, 0, 0);
     }
 
     private void Move()
@@ -79,7 +79,8 @@ public class PlayerController2 : MonoBehaviour
     }
 
     public void TakeDamage(int damage)
-    {
+    {   
+        Debug.Log("Player got hit for " + damage + " damage");
         health -= damage;
     }
 }

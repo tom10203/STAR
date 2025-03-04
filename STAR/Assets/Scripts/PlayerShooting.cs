@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using static UnityEngine.GraphicsBuffer;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class PlayerShooting : MonoBehaviour
 {
     [Header("Weapon Settings")]
     [SerializeField] int gunDamage = 1;
@@ -52,10 +52,25 @@ public class NewMonoBehaviourScript : MonoBehaviour
             {
                 _lr.SetPosition(1, hit.point);
 
-                if (hit.collider.CompareTag("Target"))
+                /////Added by Robert
+                Renderer rend = hit.transform.GetComponent<Renderer>();
+                if (rend != null)
                 {
-                    Target target = hit.collider.GetComponent<Target>();
-                    target.TargetHit();
+                    Texture2D tex = rend.material.mainTexture as Texture2D;
+                    if (tex != null)
+                    {
+                        var xInTex = (int)(hit.textureCoord.x * tex.width);
+                        var yInTex = (int)(hit.textureCoord.y * tex.height);
+                        var pixel = tex.GetPixel(xInTex, yInTex);
+                        if (pixel.a > 0)
+                        {
+                            if (hit.collider.CompareTag("Target"))
+                            {
+                                Target target = hit.collider.GetComponent<Target>();
+                                target.TargetHit();
+                            }
+                        }
+                    }
                 }
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -65,6 +80,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
                         robotEnemy.TakeDamage(gunDamage);
                     }
                 }
+                /////
             }
             else
             {
