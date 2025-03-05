@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2714917056024009604}
   - component: {fileID: 3848052937088049803}
   - component: {fileID: 6066218849501366781}
+  - component: {fileID: 161721351175611528}
   m_Layer: 0
   m_Name: SmallWall1
   m_TagString: Untagged
@@ -92,3 +93,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &161721351175611528
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402083278056165598}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 9.23
+  m_Direction: 0
+  m_Center: {x: 1.25, y: -0.17, z: 0.00000047683716}
