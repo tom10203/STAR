@@ -71,6 +71,9 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     private float _timeSinceJumpRequest;
     private bool _ungroundedDueToJump;
     private Collider[] _uncrouchOverlapResults;
+
+    private int health = 10;
+
     public void Initialise()
     {
         motor.CharacterController = this;
@@ -427,6 +430,12 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     }
 
     public CharacterState GetState() => _state;
-    public CharacterState GetLastState() => _lastState; 
-    
+    public CharacterState GetLastState() => _lastState;
+
+    public void TakeDamage(int damage)
+    {
+        //Debug.Log("Player got hit for " + damage + " damage");
+        health -= damage;
+    }
+
 }
