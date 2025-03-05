@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Mouse Sensitivity")]
     public Slider mouseSlider;
+    //Must remember to make sure the mouse sensitivity variable in the player script is set to PlayerPrefs.GetFloat("mouseSensitivity") in its start function
 
     private void Awake()
     {
