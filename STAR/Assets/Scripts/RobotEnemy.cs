@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -29,6 +30,8 @@ public class RobotEnemy : MonoBehaviour
     private Vector3 shootpos;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float navStopDistance = 4f;
+    [SerializeField] private Animator animator;
+    private bool dead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,27 +68,41 @@ public class RobotEnemy : MonoBehaviour
             {
                 FindPath();
                 ShootLasers();
+                Animations();
             }
         }
         else
         {
-            //Die
-            Die();
+            if (!dead)
+            {
+                dead = true;
+                Die();
+            }
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            player.TakeDamage(damageAmount);
-        }
-    }
+    /* private void OnCollisionEnter(Collision collision)
+     {
+         if (collision.collider.CompareTag("Player"))
+         {
+             player.TakeDamage(damageAmount);
+         }
+     }*/
 
     public void TakeDamage(int damage)
     {
         Debug.Log("Enemy got hit for " + damage + " damage");
         health -= damage;
+    }
+    public void HeadTakeDamage()
+    {
+        if (!dead)
+        {
+            Debug.Log("Headshot!");
+            dead = true;
+            health = 0;
+            DieHeadshot();
+        }
     }
 
     private void FindPath()
@@ -181,8 +198,26 @@ public class RobotEnemy : MonoBehaviour
 
     void Die()
     {
+        animator.SetTrigger("Dead");
+        StartCoroutine(KillLasers());
+    }
+    void DieHeadshot()
+    {
+
+        Debug.Log("7");
+        animator.SetTrigger("DeadHeadshot");
+        StartCoroutine(KillLasers());
+    }
+
+    void Animations()
+    {
+        animator.SetFloat("Speed", navAgent.velocity.magnitude);
+    }
+
+    IEnumerator KillLasers()
+    {
+        yield return new WaitForSeconds(1);
         laserL.enabled = false;
         laserR.enabled = false;
-
     }
 }

@@ -81,10 +81,19 @@ public class PlayerShooting : MonoBehaviour
                 }
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
+                    RobotEnemy robotEnemy = hit.transform.root.gameObject.GetComponent<RobotEnemy>();
                     if (robotEnemy != null)
                     {
                         robotEnemy.TakeDamage(gunDamage);
+                    }
+                }
+                else if(hit.collider.CompareTag("EnemyHead"))
+                {
+                    RobotEnemy robotEnemy = hit.transform.root.gameObject.GetComponent<RobotEnemy>();
+                    if (robotEnemy != null)
+                    {
+                        Debug.Log("6");
+                        robotEnemy.HeadTakeDamage();
                     }
                 }
 
