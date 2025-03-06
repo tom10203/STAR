@@ -6,14 +6,18 @@ public class TriggerObject : MonoBehaviour
     [SerializeField] private InteractableHandler[] interactableObjects;
     public bool isTriggered; 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (isTriggered)
+        {
+            for (int i = 0; i < interactableObjects.Length; i++)
+            {
+                InteractableHandler handler = interactableObjects[i];
+                handler.PerformAction();
+            }
+        }
+
+        isTriggered = false;
     }
 }

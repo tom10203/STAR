@@ -1,15 +1,21 @@
 using UnityEngine;
 
-public abstract class LaserWall : InteractableHandler
+public class LaserWall : InteractableHandler
 {
-    private void Update()
+    MeshRenderer meshRenderer;
+    BoxCollider boxCollider;
+
+    private void Start()
     {
-        
+        meshRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
-    private void PerformAction()
+    public override void PerformAction()
     {
-
+        interact = false;
+        boxCollider.enabled = false;
+        meshRenderer.enabled = false;
     }
 
 }

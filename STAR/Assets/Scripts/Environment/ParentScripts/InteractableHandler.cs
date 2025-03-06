@@ -1,12 +1,10 @@
 using UnityEngine;
 
-public class InteractableHandler: MonoBehaviour
+public abstract class InteractableHandler: MonoBehaviour
 {
 
-    public bool interact;
-    public void PerformAction()
-    {
-
-    }
+    public virtual bool interact { get; set; } = true;
+    public virtual void PerformAction() { }
+  
     
 }
