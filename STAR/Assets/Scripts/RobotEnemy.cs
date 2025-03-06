@@ -70,6 +70,7 @@ public class RobotEnemy : MonoBehaviour
         else
         {
             //Die
+            Die();
         }
     }
 
@@ -116,7 +117,7 @@ public class RobotEnemy : MonoBehaviour
             if (!delayingshoot)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(head.transform.position, ((camTransform.position - Vector3.up * 0.5f) - head.transform.position).normalized, out hit, 300f, layerMask))
+                if (Physics.Raycast(head.transform.position, ((camTransform.position - Vector3.up * 0.5f) - head.transform.position).normalized, out hit, 300f, layerMask, QueryTriggerInteraction.Ignore))
                 {
                     if (hit.collider.CompareTag("Player"))
                     {
@@ -176,5 +177,12 @@ public class RobotEnemy : MonoBehaviour
     private void LateUpdate()
     {
         head.LookAt(head.position + (head.position - shootpos));
+    }
+
+    void Die()
+    {
+        laserL.enabled = false;
+        laserR.enabled = false;
+
     }
 }

@@ -27,6 +27,8 @@ public class PlayerShooting : MonoBehaviour
     private float lazerYAngle = 0;
     private float lazerLength = 0;
 
+    [SerializeField] private LayerMask layerMask;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,7 +55,7 @@ public class PlayerShooting : MonoBehaviour
 
             //_lr.SetPosition(0, gunEnd.transform.position);
 
-            if (Physics.Raycast(rayOrigin, playerCam.transform.forward, out hit, range))
+            if (Physics.Raycast(rayOrigin, playerCam.transform.forward, out hit, range, layerMask, QueryTriggerInteraction.Ignore))
             {
                 //_lr.SetPosition(1, hit.point);
 
