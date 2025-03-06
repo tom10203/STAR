@@ -24,6 +24,7 @@ public class PlayerCamera : MonoBehaviour
     public void UpdateRotation(CameraInput input)
     {
         _eulerAngles += new Vector3(-input.look.y, input.look.x) * sensitivity;
+        var eulerAnglesX = _eulerAngles.x;
         transform.eulerAngles = _eulerAngles;
     }
 }
