@@ -28,9 +28,10 @@ public class RobotEnemy : MonoBehaviour
     private bool isRobertsLevel = false;
     private Vector3 shootpos;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float navStopDistance = 4f;
 
-   // Start is called once before the first execution of Update after the MonoBehaviour is created
-   void Start()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
         player = GameObject.FindFirstObjectByType<PlayerCharacter>();
         camTransform = Camera.main.transform;
@@ -38,6 +39,8 @@ public class RobotEnemy : MonoBehaviour
         {
             isRobertsLevel = true;
         }
+
+        navAgent.stoppingDistance = navStopDistance;
 
         if (activated)
         {
@@ -117,7 +120,7 @@ public class RobotEnemy : MonoBehaviour
                 {
                     if (hit.collider.CompareTag("Player"))
                     {
-                        navAgent.stoppingDistance = 2f;
+                        navAgent.stoppingDistance = navStopDistance;
                         delayingshoot = true;
                         shootpos = camTransform.position - Vector3.up * 0.5f;
                     }
