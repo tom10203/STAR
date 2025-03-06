@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class RobotEnemy : MonoBehaviour
 {
     [SerializeField] NavMeshAgent navAgent;
-    private PlayerCharacter player;
+    private PlayerCharacter2 player;
     private float searchTime = 1f;
     private float searchTimer = 1f;
     private int health = 3;
@@ -33,7 +33,7 @@ public class RobotEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindFirstObjectByType<PlayerCharacter>();
+        player = GameObject.FindFirstObjectByType<PlayerCharacter2>();
         camTransform = Camera.main.transform;
         if (SceneManager.GetActiveScene().name == "Robert")
         {
