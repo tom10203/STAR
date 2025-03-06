@@ -140,7 +140,7 @@ public class PlayerShooting : MonoBehaviour
 
             Debug.Log($"Instantiating bullet");
             // Added by Tom
-            shootingPS.Play();
+            //shootingPS.Play();
             GameObject temp = Instantiate(bullet);
             Bullet tempBullet = temp.GetComponent<Bullet>();
             tempBullet.startPos = bulletStartPoint;
