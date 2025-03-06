@@ -18,14 +18,23 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Weapon Shooting Visuals")]
     [SerializeField] float shotDuration = 0.5f;
+    [SerializeField] ParticleSystem shootingPS;
+
+    [Header("Bullet")]
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float maxBulletDist = 100f;
 
     //Ref in Start
     AudioSource _as;
     LineRenderer _lr;
 
+
     private float lazerXAngle = 0;
     private float lazerYAngle = 0;
     private float lazerLength = 0;
+
+    Vector3 bulletStartPoint;
+    Vector3 bulletEndPoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,9 +54,12 @@ public class PlayerShooting : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
 
-            StartCoroutine(ShootingEffect());
+            
 
             Vector3 rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+
+            bulletStartPoint = rayOrigin;
+            bulletEndPoint = rayOrigin + playerCam.transform.forward * maxBulletDist;
 
             RaycastHit hit;
 
@@ -86,11 +98,19 @@ public class PlayerShooting : MonoBehaviour
                     }
                 }
 
+                if (hit.transform.gameObject.layer == 9)
+                {
+                    TriggerObject trigger = hit.transform.GetComponent<TriggerObject>();
+                    trigger.isTriggered = true;
+                }
+
                 lazerXAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
                 lazerYAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.right);
                 lazerLength = (hit.point - gunEnd.transform.position).magnitude;
 
-                /////
+
+
+                bulletEndPoint = hit.point;
             }
             else
             {
@@ -101,6 +121,7 @@ public class PlayerShooting : MonoBehaviour
                 lazerLength = (playerCam.transform.forward * 10000 - gunEnd.transform.position).magnitude;
             }
 
+            StartCoroutine(ShootingEffect());
         }
 
         Vector3 thevector = Quaternion.AngleAxis(-lazerXAngle, gunEnd.transform.up) * gunEnd.transform.forward;
@@ -113,9 +134,20 @@ public class PlayerShooting : MonoBehaviour
             _as.Play();
             _lr.enabled = true;
 
-            yield return new WaitForSeconds(shotDuration);
+            //yield return new WaitForSeconds(shotDuration);
 
             _lr.enabled = false;
+
+            Debug.Log($"Instantiating bullet");
+            // Added by Tom
+            shootingPS.Play();
+            GameObject temp = Instantiate(bullet);
+            Bullet tempBullet = temp.GetComponent<Bullet>();
+            tempBullet.startPos = bulletStartPoint;
+            tempBullet.endPos = bulletEndPoint;
+
+            yield return null;
+
 
         }
 
