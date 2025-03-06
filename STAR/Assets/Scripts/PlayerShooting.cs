@@ -23,6 +23,9 @@ public class PlayerShooting : MonoBehaviour
     AudioSource _as;
     LineRenderer _lr;
 
+    private float lazerXAngle = 0;
+    private float lazerYAngle = 0;
+    private float lazerLength = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +34,8 @@ public class PlayerShooting : MonoBehaviour
         _as = GetComponent<AudioSource>();
         playerCam = Camera.main;
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -46,11 +51,11 @@ public class PlayerShooting : MonoBehaviour
 
             RaycastHit hit;
 
-            _lr.SetPosition(0, gunEnd.transform.position);
+            //_lr.SetPosition(0, gunEnd.transform.position);
 
             if (Physics.Raycast(rayOrigin, playerCam.transform.forward, out hit, range))
             {
-                _lr.SetPosition(1, hit.point);
+                //_lr.SetPosition(1, hit.point);
 
                 /////Added by Robert
                 Renderer rend = hit.transform.GetComponent<Renderer>();
@@ -75,19 +80,33 @@ public class PlayerShooting : MonoBehaviour
                 if (hit.collider.CompareTag("Enemy"))
                 {
                     RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
-                    if(robotEnemy != null)
+                    if (robotEnemy != null)
                     {
                         robotEnemy.TakeDamage(gunDamage);
                     }
                 }
+
+                lazerXAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
+                lazerYAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.right);
+                lazerLength = (hit.point - gunEnd.transform.position).magnitude;
+
                 /////
             }
             else
             {
-                _lr.SetPosition(1, playerCam.transform.forward * 1000000);
+                //_lr.SetPosition(1, playerCam.transform.forward * 1000000);
+
+                lazerXAngle = Vector3.SignedAngle(playerCam.transform.forward * 10000 - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
+                lazerYAngle = Vector3.SignedAngle(playerCam.transform.forward * 10000 - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.right);
+                lazerLength = (playerCam.transform.forward * 10000 - gunEnd.transform.position).magnitude;
             }
 
         }
+
+        Vector3 thevector = Quaternion.AngleAxis(-lazerXAngle, gunEnd.transform.up) * gunEnd.transform.forward;
+        thevector = Quaternion.AngleAxis(-lazerYAngle * 0.5f, gunEnd.transform.right) * thevector;
+        _lr.SetPosition(1, gunEnd.transform.position + thevector * lazerLength);
+        _lr.SetPosition(0, gunEnd.transform.position);
 
         IEnumerator ShootingEffect()
         {
