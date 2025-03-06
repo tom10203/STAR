@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target
   - Enemy
+  - EnemyHead
   layers:
   - Default
   - TransparentFX
@@ -13,10 +14,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - InFront
+  - Player
+  - Interactable
   - 
   - 
   - 

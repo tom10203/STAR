@@ -37,11 +37,13 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] private float crouchResponse = 20f;
     [SerializeField] private float jumpSpeed = 30f;
     [SerializeField] private float coyoteTime = 0.2f;
+    [SerializeField] private float coyoteTimeSlide = 0.2f;
     [SerializeField] private float airSpeed = 15f;
     [SerializeField] private float airAcceleration = 70f;
     [SerializeField] private float gravity = -90f;
     [Space]
     [SerializeField] private float slideStartSpeed = 25f;
+    [SerializeField] private float slideStartSpeedFromAir = 35f;
     [SerializeField] private float slideEndSpeed = 15f;
     [SerializeField] private float slideFriction = 0.8f;
     [SerializeField] private float slideSteerAcceleration = 5f;
@@ -70,7 +72,12 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     private float _timeSinceUngrounded;
     private float _timeSinceJumpRequest;
     private bool _ungroundedDueToJump;
+    private float _timeSinceLanded;
+    private bool _increaseTimeSinceLanded;
     private Collider[] _uncrouchOverlapResults;
+
+    private int health = 10;
+
     public void Initialise()
     {
         motor.CharacterController = this;
@@ -160,9 +167,23 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 var crouching = _state.stance is Stance.Crouch;
                 var wasStanding = _lastState.stance is Stance.Stand;
                 var wasInAir = !_lastState.grounded;
+
+                if (wasInAir)
+                {
+                    _increaseTimeSinceLanded = true;
+                    //_timeSinceLanded += deltaTime;
+                }
+
+                if (_increaseTimeSinceLanded)
+                {
+                    _timeSinceLanded += deltaTime;
+                }
+
                 if (moving && crouching && (wasStanding || wasInAir))
                 {
                     _state.stance = Stance.Slide;
+
+                    var effectiveSlideSpeed = _timeSinceLanded < coyoteTimeSlide ? slideStartSpeedFromAir: slideStartSpeed;
 
                     if (wasInAir)
                     {
@@ -171,9 +192,11 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                                 vector: _lastState.velocity,
                                 planeNormal: motor.GroundingStatus.GroundNormal
                             );
+
+                        //effectiveSlideSpeed = slideStartSpeedFromAir;
                     }
 
-                    var effectiveSlideSpeed = slideStartSpeed;
+                    
                     if (!_lastState.grounded && !_requestedCrouchInAir)
                     {
                         effectiveSlideSpeed = 0f;
@@ -234,6 +257,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         }
         else
         {
+            _increaseTimeSinceLanded = false;
+            _timeSinceLanded = 0f;
             _timeSinceUngrounded += deltaTime;
 
             if (_requestedMovement.sqrMagnitude > 0f)
@@ -427,6 +452,12 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     }
 
     public CharacterState GetState() => _state;
-    public CharacterState GetLastState() => _lastState; 
-    
+    public CharacterState GetLastState() => _lastState;
+
+    public void TakeDamage(int damage)
+    {
+        //Debug.Log("Player got hit for " + damage + " damage");
+        health -= damage;
+    }
+
 }
