@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public abstract class InteractableHandler: MonoBehaviour
+public class InteractableHandler: MonoBehaviour
 {
 
     public bool interact;
-    public abstract void PerformAction();
+    public void PerformAction()
+    {
+
+    }
     
 }
