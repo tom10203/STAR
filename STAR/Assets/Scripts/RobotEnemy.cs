@@ -170,8 +170,6 @@ public class RobotEnemy : MonoBehaviour
 
     public void ActivateRobots()
     {
-
-        Debug.Log("3");
         activated = true;
     }
 

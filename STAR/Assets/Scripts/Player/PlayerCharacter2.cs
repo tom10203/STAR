@@ -104,8 +104,6 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
 
         cameraTarget.localPosition = Vector3.Lerp(cameraTarget.localPosition, new Vector3(0f, cameraTargetHeight, 0f), 1f - Mathf.Exp(-crouchHeightResponse * deltaTime));
 
-
-        Debug.Log("requested crouch = " + _requestedCrouch);
         root.localScale = Vector3.Lerp(root.localScale, rootTargetScale, 1f - Mathf.Exp(-crouchHeightResponse * deltaTime));
     }
 
@@ -343,8 +341,6 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
         _tempState = _state;
         if (_requestedCrouch && _state.stance is Stance.Stand)
         {
-
-            Debug.Log("3");
             _state.stance = Stance.Crouch;
             motor.SetCapsuleDimensions
             (
@@ -381,7 +377,6 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
 
             /*if (motor.CharacterOverlap(motor.TransientPosition, motor.TransientRotation, _uncrouchOverlapResults, motor.CollidableLayers, QueryTriggerInteraction.Ignore) > 0)
             {
-                Debug.Log("4");
                 _requestedCrouch = true;
                 motor.SetCapsuleDimensions
                 (
