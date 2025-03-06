@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class RobotEnemy : MonoBehaviour
 {
     [SerializeField] NavMeshAgent navAgent;
-    private PlayerCharacter player;
+    private PlayerCharacter2 player;
     private float searchTime = 1f;
     private float searchTimer = 1f;
     private int health = 3;
@@ -33,7 +33,7 @@ public class RobotEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindFirstObjectByType<PlayerCharacter>();
+        player = GameObject.FindFirstObjectByType<PlayerCharacter2>();
         camTransform = Camera.main.transform;
         if (SceneManager.GetActiveScene().name == "Robert")
         {
@@ -70,6 +70,7 @@ public class RobotEnemy : MonoBehaviour
         else
         {
             //Die
+            Die();
         }
     }
 
@@ -116,7 +117,7 @@ public class RobotEnemy : MonoBehaviour
             if (!delayingshoot)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(head.transform.position, ((camTransform.position - Vector3.up * 0.5f) - head.transform.position).normalized, out hit, 300f, layerMask))
+                if (Physics.Raycast(head.transform.position, ((camTransform.position - Vector3.up * 0.5f) - head.transform.position).normalized, out hit, 300f, layerMask, QueryTriggerInteraction.Ignore))
                 {
                     if (hit.collider.CompareTag("Player"))
                     {
@@ -170,13 +171,18 @@ public class RobotEnemy : MonoBehaviour
 
     public void ActivateRobots()
     {
-
-        Debug.Log("3");
         activated = true;
     }
 
     private void LateUpdate()
     {
         head.LookAt(head.position + (head.position - shootpos));
+    }
+
+    void Die()
+    {
+        laserL.enabled = false;
+        laserR.enabled = false;
+
     }
 }

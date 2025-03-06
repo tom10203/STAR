@@ -12,10 +12,8 @@ public class RobotTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("1");
         if (other.transform.CompareTag("Player"))
         {
-            Debug.Log("2");
             firstRobot.DoLazer();
             foreach(RobotEnemy robot in robots)
             {
