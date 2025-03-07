@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallWall2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1144496372018949196, guid: 4b7b86b4ede41b44d8cd2206503c1a86, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3174376942664356900, guid: 4b7b86b4ede41b44d8cd2206503c1a86, type: 3}
       propertyPath: m_Enabled
       value: 1

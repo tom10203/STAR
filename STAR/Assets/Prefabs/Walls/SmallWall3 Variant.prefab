@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallWall3 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8701593939991834908, guid: 420761bb19979534e8e00ad770c3bf9b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
