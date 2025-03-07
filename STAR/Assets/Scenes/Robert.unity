@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &55836541
 Transform:
   m_ObjectHideFlags: 0
@@ -2054,7 +2054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &372996518
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2375,6 +2375,10 @@ PrefabInstance:
     - target: {fileID: 3882650540842622201, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882650540842622201, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4339195202860099751, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
       propertyPath: m_Controller
@@ -4792,7 +4796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &851635632
 Transform:
   m_ObjectHideFlags: 0
@@ -12183,7 +12187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8736760392076119673, guid: f1b4d5e47c3adbd45aea34b202115936, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8736760392076119673, guid: f1b4d5e47c3adbd45aea34b202115936, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12731,6 +12735,10 @@ PrefabInstance:
     - target: {fileID: 3882650540842622201, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882650540842622201, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13526,7 +13534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3054794727411845115, guid: a9f94182b715ea34f923e76087becd57, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4194374850797044520, guid: a9f94182b715ea34f923e76087becd57, type: 3}
       propertyPath: range
