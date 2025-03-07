@@ -12728,6 +12728,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2162057379352075728, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 142652760}
+    - target: {fileID: 2162057379352075728, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 3967053910635037425}
     - target: {fileID: 3882650540842622201, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
       propertyPath: m_Name
       value: RobotEnemy
@@ -12748,6 +12756,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 142652760}
   m_SourcePrefab: {fileID: 100100000, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
+--- !u!82 &3967053910635037425 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5905469606890925676, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
+  m_PrefabInstance: {fileID: 3967053910635037424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4307755371110517221
 PrefabInstance:
   m_ObjectHideFlags: 0
