@@ -23,6 +23,7 @@ public class PlayerShooting : MonoBehaviour
     [Header("Bullet")]
     [SerializeField] private GameObject bullet;
     [SerializeField] private float maxBulletDist = 100f;
+    [SerializeField] private float bulletSpeed = 1000f;
 
     //Ref in Start
     AudioSource _as;
@@ -58,8 +59,10 @@ public class PlayerShooting : MonoBehaviour
 
             Vector3 rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
 
-            bulletStartPoint = rayOrigin;
+            bulletStartPoint = gunEnd.transform.position;
             bulletEndPoint = rayOrigin + playerCam.transform.forward * maxBulletDist;
+
+            int layerHit = 0;
 
             RaycastHit hit;
 
@@ -81,27 +84,31 @@ public class PlayerShooting : MonoBehaviour
                         var pixel = tex.GetPixel(xInTex, yInTex);
                         if (pixel.a > 0)
                         {
-                            if (hit.collider.CompareTag("Target"))
-                            {
-                                Target target = hit.collider.GetComponent<Target>();
-                                target.TargetHit();
-                            }
+                            //if (hit.collider.CompareTag("Target"))
+                            //{
+                            //    Target target = hit.collider.GetComponent<Target>();
+                            //    target.TargetHit();
+                                
+                            //}
+
+                            layerHit = 1;
                         }
                     }
                 }
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
-                    if (robotEnemy != null)
-                    {
-                        robotEnemy.TakeDamage(gunDamage);
-                    }
+                    //RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
+                    //if (robotEnemy != null)
+                    //{
+                    //    //robotEnemy.TakeDamage(gunDamage);
+                        
+                    //}
+                    layerHit = 2;
                 }
 
-                if (hit.transform.gameObject.layer == 9)
+                if (hit.transform.gameObject.layer == 9) // interactable layer
                 {
-                    TriggerObject trigger = hit.transform.GetComponent<TriggerObject>();
-                    trigger.isTriggered = true;
+                        layerHit = 9;      
                 }
 
                 lazerXAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
@@ -111,6 +118,9 @@ public class PlayerShooting : MonoBehaviour
 
 
                 bulletEndPoint = hit.point;
+                StartCoroutine(DelayBulletHit(hit, bulletStartPoint, bulletEndPoint, layerHit));
+
+
             }
             else
             {
@@ -129,22 +139,69 @@ public class PlayerShooting : MonoBehaviour
         _lr.SetPosition(1, gunEnd.transform.position + thevector * lazerLength);
         _lr.SetPosition(0, gunEnd.transform.position);
 
+        
+        float CalculateTimeToBulletHit(Vector3 startPos, Vector3 endPos)
+        {
+            return (endPos - startPos).magnitude / bulletSpeed;
+        }
+
+        IEnumerator DelayBulletHit(RaycastHit hit, Vector3 startPos, Vector3 endPos, int layer)
+        {
+            if (layer == 0)
+            {
+                yield break;
+            }
+
+            yield return new WaitForSeconds(CalculateTimeToBulletHit(startPos, endPos));
+
+
+            if (layer == 1)
+            {
+                Target target = hit.collider.GetComponent<Target>();
+                if (target != null)
+                {
+                    target.TargetHit();
+                }
+            }
+            else if (layer == 2)
+            {
+                RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
+                if (robotEnemy != null)
+                {
+                    robotEnemy.TakeDamage(gunDamage);
+                }
+            }
+            else if (layer == 9)
+            {
+                TriggerObject trigger = hit.transform.GetComponent<TriggerObject>();
+                if (trigger != null)
+                {
+                    trigger.isTriggered = true;
+                }              
+            }
+        }
+
+
         IEnumerator ShootingEffect()
         {
             _as.Play();
             _lr.enabled = true;
 
-            //yield return new WaitForSeconds(shotDuration);
+            
 
             _lr.enabled = false;
 
-            Debug.Log($"Instantiating bullet");
             // Added by Tom
-            //shootingPS.Play();
+            shootingPS.Play();
+
+            yield return new WaitForSeconds(shotDuration);
+
+
             GameObject temp = Instantiate(bullet);
             Bullet tempBullet = temp.GetComponent<Bullet>();
             tempBullet.startPos = bulletStartPoint;
             tempBullet.endPos = bulletEndPoint;
+            tempBullet.bulletSpeed = bulletSpeed;
 
             yield return null;
 

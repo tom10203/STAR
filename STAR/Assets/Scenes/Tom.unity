@@ -528,10 +528,11 @@ MonoBehaviour:
   range: 60
   hitForce: 150
   gunEnd: {fileID: 1033558667}
-  shotDuration: 0.5
-  shootingPS: {fileID: 0}
+  shotDuration: 0.01
+  shootingPS: {fileID: 1592959753}
   bullet: {fileID: 7914079430805135735, guid: a90c235049170ce44be7cd6ecf057d81, type: 3}
   maxBulletDist: 1000
+  bulletSpeed: 500
 --- !u!120 &305445928
 LineRenderer:
   serializedVersion: 2
@@ -6828,7 +6829,8 @@ Transform:
   m_LocalPosition: {x: 6.62, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1592959754}
   m_Father: {fileID: 387343760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1035985510
@@ -7372,7 +7374,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -8356,7 +8358,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -8367,19 +8369,19 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 1
           inSlope: 0
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
-          tangentMode: 0
+          value: 0.09868431
+          inSlope: -0.9013157
+          outSlope: 1
+          tangentMode: 5
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
@@ -12144,12 +12146,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592959751}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.283772, y: 4.81, z: 66.18}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: -0, y: -0.7063041, z: -0, w: 0.70790863}
+  m_LocalPosition: {x: 0.02, y: 0, z: -0}
+  m_LocalScale: {x: 0.29999998, y: 0.3, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1033558667}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1661829848
 PrefabInstance:
@@ -13441,4 +13443,3 @@ SceneRoots:
   - {fileID: 403578982}
   - {fileID: 870329567}
   - {fileID: 2022101729}
-  - {fileID: 1592959754}
