@@ -24,6 +24,7 @@ public class GatlingGun : MonoBehaviour
 
     // Used to start and stop the turret firing
     bool canFire = false;
+    bool playerInSight;
 
     
     void Start()
@@ -47,32 +48,44 @@ public class GatlingGun : MonoBehaviour
     // Detect an Enemy, aim and fire
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Player")
         {
             go_target = other.transform;
-            canFire = true;
+             playerInSight = true;
+            StartCoroutine(shootSequece());
         }
 
     }
     // Stop firing
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Player")
         {
+            playerInSight = false;
             canFire = false;
+            StopCoroutine(shootSequece());
         }
     }
 
+    IEnumerator shootSequece()
+    {
+        yield return new WaitForSeconds(2);
+        canFire = true;
+        yield return new WaitForSeconds(5);
+        canFire = false;
+        StartCoroutine(shootSequece());
+    }
     void AimAndFire()
     {
         // Gun barrel rotation
-        go_barrel.transform.Rotate(0, 0, currentRotationSpeed * Time.deltaTime);
+        if(playerInSight) go_barrel.transform.Rotate(0, 0, currentRotationSpeed * Time.deltaTime);
 
         // if can fire turret activates
         if (canFire)
         {
             // start rotation
             currentRotationSpeed = barrelRotationSpeed;
+            
 
             // aim at enemy
             Vector3 baseTargetPostition = new Vector3(go_target.position.x, this.transform.position.y, go_target.position.z);
@@ -90,7 +103,7 @@ public class GatlingGun : MonoBehaviour
         else
         {
             // slow down barrel rotation and stop
-            currentRotationSpeed = Mathf.Lerp(currentRotationSpeed, 0, 10 * Time.deltaTime);
+            currentRotationSpeed = Mathf.Lerp(currentRotationSpeed, 0, 2 * Time.deltaTime);
 
             // stop the particle system
             if (muzzelFlash.isPlaying)
