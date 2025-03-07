@@ -33,6 +33,7 @@ public class RobotEnemy : MonoBehaviour
     [SerializeField] private Animator animator;
     private bool dead = false;
     [SerializeField] private Collider coll;
+    [SerializeField] private AudioSource audio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -157,6 +158,7 @@ public class RobotEnemy : MonoBehaviour
                 }
                 else
                 {
+                    audio.PlayOneShot(audio.clip);
                     shootTimer = 0f;
                     shootingTimer = 0f;
                     shooting = true;
