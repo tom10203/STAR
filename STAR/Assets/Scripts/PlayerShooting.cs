@@ -23,7 +23,9 @@ public class PlayerShooting : MonoBehaviour
     [Header("Bullet")]
     [SerializeField] private GameObject bullet;
     [SerializeField] private float maxBulletDist = 100f;
-    [SerializeField] private float bulletSpeed = 1000f;
+    [SerializeField] private float bulletSpeed = 250f;
+    [SerializeField] private float bulletHitBuffer = 0.1f;
+    [SerializeField] private ParticleSystem bulletHitPE;
 
     //Ref in Start
     AudioSource _as;
@@ -118,6 +120,7 @@ public class PlayerShooting : MonoBehaviour
 
 
                 bulletEndPoint = hit.point;
+                Debug.DrawRay(bulletEndPoint, Vector3.up * 10, Color.red, 10f);
                 StartCoroutine(DelayBulletHit(hit, bulletStartPoint, bulletEndPoint, layerHit));
 
 
@@ -152,7 +155,7 @@ public class PlayerShooting : MonoBehaviour
                 yield break;
             }
 
-            yield return new WaitForSeconds(CalculateTimeToBulletHit(startPos, endPos));
+            yield return new WaitForSeconds(CalculateTimeToBulletHit(startPos, endPos) - bulletHitBuffer);
 
 
             if (layer == 1)
@@ -179,6 +182,9 @@ public class PlayerShooting : MonoBehaviour
                     trigger.isTriggered = true;
                 }              
             }
+
+
+            Instantiate(bulletHitPE, hit.point, Quaternion.identity);
         }
 
 
