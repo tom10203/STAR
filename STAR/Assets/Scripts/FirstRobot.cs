@@ -15,12 +15,13 @@ public class FirstRobot : MonoBehaviour
     private float shootingTimer = 0f;
     private float shootingTime = 1f;
     private Vector3 targetPos;
-
+    [SerializeField] private AudioSource audio;
     public void DoLazer()
     {
         targetPos = firstRobotTarget.position;
         shooting = true;
         target.TargetHit();
+        audio.PlayOneShot(audio.clip);
     }
 
     void Update()

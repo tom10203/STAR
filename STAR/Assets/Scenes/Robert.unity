@@ -502,6 +502,7 @@ MonoBehaviour:
   eyeR: {fileID: 7294315111540549568}
   laserL: {fileID: 5178019454758543425}
   laserR: {fileID: 5610931740872091627}
+  audio: {fileID: 5732555602452103526}
 --- !u!1 &77982555
 GameObject:
   m_ObjectHideFlags: 0
@@ -16424,6 +16425,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &5732555602452103526 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5905469606890925676, guid: 823df1222716c1f4f9babbca008e813d, type: 3}
+  m_PrefabInstance: {fileID: 394116079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5983217392987949197
 GameObject:
   m_ObjectHideFlags: 0
