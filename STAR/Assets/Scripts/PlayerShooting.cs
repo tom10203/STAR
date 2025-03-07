@@ -42,7 +42,7 @@ public class PlayerShooting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _lr = GetComponent<LineRenderer>();
+        //_lr = GetComponent<LineRenderer>();
         _as = GetComponent<AudioSource>();
         playerCam = Camera.main;
 
@@ -107,15 +107,21 @@ public class PlayerShooting : MonoBehaviour
                     //}
                     layerHit = 2;
                 }
+                if (hit.collider.CompareTag("EnemyHead"))
+                {
+                    layerHit = 3;
+                }
 
                 if (hit.transform.gameObject.layer == 9) // interactable layer
                 {
-                        layerHit = 9;      
+                        layerHit = 9;
                 }
 
-                lazerXAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
+                //laser code
+                /*
+                /lazerXAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
                 lazerYAngle = Vector3.SignedAngle(hit.point - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.right);
-                lazerLength = (hit.point - gunEnd.transform.position).magnitude;
+                lazerLength = (hit.point - gunEnd.transform.position).magnitude;*/
 
 
 
@@ -127,20 +133,22 @@ public class PlayerShooting : MonoBehaviour
             }
             else
             {
+                //laser code
                 //_lr.SetPosition(1, playerCam.transform.forward * 1000000);
 
-                lazerXAngle = Vector3.SignedAngle(playerCam.transform.forward * 10000 - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
+                /*lazerXAngle = Vector3.SignedAngle(playerCam.transform.forward * 10000 - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.up);
                 lazerYAngle = Vector3.SignedAngle(playerCam.transform.forward * 10000 - gunEnd.transform.position, gunEnd.transform.forward, gunEnd.transform.right);
-                lazerLength = (playerCam.transform.forward * 10000 - gunEnd.transform.position).magnitude;
+                lazerLength = (playerCam.transform.forward * 10000 - gunEnd.transform.position).magnitude;*/
             }
 
             StartCoroutine(ShootingEffect());
         }
 
-        Vector3 thevector = Quaternion.AngleAxis(-lazerXAngle, gunEnd.transform.up) * gunEnd.transform.forward;
+        //laser code
+        /*Vector3 thevector = Quaternion.AngleAxis(-lazerXAngle, gunEnd.transform.up) * gunEnd.transform.forward;
         thevector = Quaternion.AngleAxis(-lazerYAngle * 0.5f, gunEnd.transform.right) * thevector;
         _lr.SetPosition(1, gunEnd.transform.position + thevector * lazerLength);
-        _lr.SetPosition(0, gunEnd.transform.position);
+        _lr.SetPosition(0, gunEnd.transform.position);*/
 
         
         float CalculateTimeToBulletHit(Vector3 startPos, Vector3 endPos)
@@ -168,10 +176,17 @@ public class PlayerShooting : MonoBehaviour
             }
             else if (layer == 2)
             {
-                RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
+                RobotEnemy robotEnemy = hit.transform.root.gameObject.GetComponent<RobotEnemy>();
                 if (robotEnemy != null)
                 {
                     robotEnemy.TakeDamage(gunDamage);
+                }
+            }else if(layer == 3)
+            {
+                RobotEnemy robotEnemy = hit.transform.root.gameObject.GetComponent<RobotEnemy>();
+                if (robotEnemy != null)
+                {
+                    robotEnemy.HeadTakeDamage();
                 }
             }
             else if (layer == 9)
@@ -180,7 +195,7 @@ public class PlayerShooting : MonoBehaviour
                 if (trigger != null)
                 {
                     trigger.isTriggered = true;
-                }              
+                }
             }
 
 
@@ -191,11 +206,10 @@ public class PlayerShooting : MonoBehaviour
         IEnumerator ShootingEffect()
         {
             _as.Play();
-            _lr.enabled = true;
 
-            
-
-            _lr.enabled = false;
+            //laser code
+            //_lr.enabled = true;
+            //_lr.enabled = false;
 
             // Added by Tom
             shootingPS.Play();
