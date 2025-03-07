@@ -32,6 +32,7 @@ public class RobotEnemy : MonoBehaviour
     [SerializeField] private float navStopDistance = 4f;
     [SerializeField] private Animator animator;
     private bool dead = false;
+    [SerializeField] private Collider coll;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -193,13 +194,17 @@ public class RobotEnemy : MonoBehaviour
 
     private void LateUpdate()
     {
-        head.LookAt(head.position + (head.position - shootpos));
+        if (!dead)
+        {
+            head.LookAt(head.position + (head.position - shootpos));
+        }
     }
 
     void Die()
     {
         animator.SetTrigger("Dead");
         StartCoroutine(KillLasers());
+        coll.enabled = false;
     }
     void DieHeadshot()
     {
@@ -207,6 +212,7 @@ public class RobotEnemy : MonoBehaviour
         Debug.Log("7");
         animator.SetTrigger("DeadHeadshot");
         StartCoroutine(KillLasers());
+        coll.enabled = false;
     }
 
     void Animations()
