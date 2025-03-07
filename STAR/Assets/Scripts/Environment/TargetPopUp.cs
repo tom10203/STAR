@@ -12,6 +12,7 @@ public class TargetPopUp : InteractableHandler
     // Update is called once per frame
     public override void PerformAction()
     {
+        gameObject.SetActive(true);
         PopUp();
         interact = false;
     }
