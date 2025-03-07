@@ -86,25 +86,13 @@ public class PlayerShooting : MonoBehaviour
                         var pixel = tex.GetPixel(xInTex, yInTex);
                         if (pixel.a > 0)
                         {
-                            //if (hit.collider.CompareTag("Target"))
-                            //{
-                            //    Target target = hit.collider.GetComponent<Target>();
-                            //    target.TargetHit();
-                                
-                            //}
-
                             layerHit = 1;
                         }
                     }
                 }
+               
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    //RobotEnemy robotEnemy = hit.collider.GetComponent<RobotEnemy>();
-                    //if (robotEnemy != null)
-                    //{
-                    //    //robotEnemy.TakeDamage(gunDamage);
-                        
-                    //}
                     layerHit = 2;
                 }
                 if (hit.collider.CompareTag("EnemyHead"))
@@ -126,7 +114,6 @@ public class PlayerShooting : MonoBehaviour
 
 
                 bulletEndPoint = hit.point;
-                Debug.DrawRay(bulletEndPoint, Vector3.up * 10, Color.red, 10f);
                 StartCoroutine(DelayBulletHit(hit, bulletStartPoint, bulletEndPoint, layerHit));
 
 
