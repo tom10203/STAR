@@ -342,10 +342,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
                 motor.ForceUnground(time: 0f);
                 _ungroundedDueToJump = true;
-
                 var currentVerticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
                 var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, jumpSpeed);
-
                 currentVelocity += motor.CharacterUp * (targetVerticalSpeed - currentVerticalSpeed);
             }
             else
