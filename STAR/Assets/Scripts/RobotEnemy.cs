@@ -207,6 +207,7 @@ public class RobotEnemy : MonoBehaviour
         animator.SetTrigger("Dead");
         StartCoroutine(KillLasers());
         coll.enabled = false;
+        navAgent.enabled = false;
     }
     void DieHeadshot()
     {
@@ -215,6 +216,7 @@ public class RobotEnemy : MonoBehaviour
         animator.SetTrigger("DeadHeadshot");
         StartCoroutine(KillLasers());
         coll.enabled = false;
+        navAgent.enabled = false;
     }
 
     void Animations()
