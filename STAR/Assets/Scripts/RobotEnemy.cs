@@ -158,7 +158,8 @@ public class RobotEnemy : MonoBehaviour
                 }
                 else
                 {
-                    audio.PlayOneShot(audio.clip);
+                    audio.pitch = Random.Range(0.3f, 0.4f);
+                    audio.Play();
                     shootTimer = 0f;
                     shootingTimer = 0f;
                     shooting = true;
@@ -185,6 +186,8 @@ public class RobotEnemy : MonoBehaviour
                 shooting = false;
                 laserL.enabled = false;
                 laserR.enabled = false;
+
+                audio.Stop();
             }
         }
     }
@@ -229,5 +232,6 @@ public class RobotEnemy : MonoBehaviour
         yield return new WaitForSeconds(1);
         laserL.enabled = false;
         laserR.enabled = false;
+        audio.Stop();
     }
 }
