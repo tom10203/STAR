@@ -11,8 +11,13 @@ public class LevelController : MonoBehaviour
     public GameObject levelFailed, levelComplete, crossHair;
     public TMP_Text levelCompleteText;
     private InGameUI inGameUI;
+    public GameObject player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public PlayerCharacter playerCharacter;
+    public PlayerShooting shooting;
+    public PlayerCamera playerCamera;
+    public Player playerScript;
+
     void Start()
     {
         Time.timeScale = 1;
@@ -31,7 +36,13 @@ public class LevelController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Time.timeScale = 0;
+            playerCharacter.enabled = false;
+            shooting.enabled = false;
+            playerCamera.enabled = false;
+            playerScript.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //Time.timeScale = 0;
             LevelCleared();
         }
     }
@@ -46,6 +57,8 @@ public class LevelController : MonoBehaviour
         {
             levelComplete.SetActive(true);
             levelCompleteText.text = "WELL DONE! YOU CLEARED THE LEVEL, AND IT ONLY TOOK YOU " + inGameUI.currentTime.ToString("f2") + " SECONDS!";
+            
+            PlayerPrefs.SetFloat("BestTime" + SceneManager.GetActiveScene().name, inGameUI.currentTime);
         }
     }
     public void RestartLevel()
@@ -58,6 +71,7 @@ public class LevelController : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
+        Debug.Log($"Button clicked");
         SceneManager.LoadScene(0);
     }
 }

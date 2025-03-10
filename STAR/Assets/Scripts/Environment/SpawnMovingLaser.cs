@@ -32,6 +32,7 @@ public class SpawnMovingLaser : MonoBehaviour
     void InstantiateLaser()
     {
         currentLaser = Instantiate(laser, transform.position, transform.rotation, transform);
+        currentLaser.transform.localScale = new Vector3(currentLaser.transform.localScale.x, 0.5f, currentLaser.transform.localScale.z);
         currentMovingLaser = currentLaser.GetComponent<MovingLaser>();
         currentMovingLaser.moveDistance = laserMoveDistance;
         currentMovingLaser.moveSpeed = laserMoveSpeed;
