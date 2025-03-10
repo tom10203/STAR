@@ -28,6 +28,10 @@ public class InGameUI : MonoBehaviour
             targetText.text = "TARGET";
             targetTime = targetTimeInSeconds;
         }
+
+        int minuets = Mathf.FloorToInt(targetTime / 60);
+        int seconds = Mathf.FloorToInt(targetTime % 60);
+        targetTimeText.text = string.Format("{0:00} : {1:00}", minuets, seconds);
     }
 
     private void Update()
