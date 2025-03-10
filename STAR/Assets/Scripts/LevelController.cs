@@ -46,6 +46,8 @@ public class LevelController : MonoBehaviour
         {
             levelComplete.SetActive(true);
             levelCompleteText.text = "WELL DONE! YOU CLEARED THE LEVEL, AND IT ONLY TOOK YOU " + inGameUI.currentTime.ToString("f2") + " SECONDS!";
+            
+            PlayerPrefs.SetFloat("BestTime" + SceneManager.GetActiveScene().name, inGameUI.currentTime);
         }
     }
     public void RestartLevel()
