@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1169904081936887316, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4284419206206369094, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -56,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 4942114138611230769, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5193577797168961675, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.67
@@ -79,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 5193577797168961675, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013997613647226639, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7030577788433311948, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
       propertyPath: m_LocalScale.x
@@ -135,6 +147,10 @@ PrefabInstance:
     - target: {fileID: 7699591389786534518, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
       propertyPath: m_Name
       value: movingLaser Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699591389786534518, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9090028307454010230, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -195,7 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 200
+  deadZone: 0
   move: 0
+  moveDistance: 0
 --- !u!1 &3914538980783221944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6013997613647226639, guid: 78e08e722f75fa94483527072daa6ba1, type: 3}
@@ -214,4 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 200
+  deadZone: 0
   move: 0
+  moveDistance: 0
