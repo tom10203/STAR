@@ -660,58 +660,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8345667321743878227, guid: 63ad8c7bd7f25c444a52eaec078764d7, type: 3}
   m_PrefabInstance: {fileID: 1157573082}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &77784434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4938984801476132576, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
-  m_PrefabInstance: {fileID: 1551550721}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &77784437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77784434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5f868cfd931784c915b088dddf1f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  start: 0
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 3.7596316
-      outSlope: 3.7596316
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.0842572
-      value: 0.31677604
-      inSlope: -0.3588812
-      outSlope: -0.3588812
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.04277644
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -0.3459225
-      outSlope: -0.3459225
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  duration: 1
 --- !u!1 &79534016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3160206685436418041, guid: 63e803447acabe0408fa64944eeb6873, type: 3}
@@ -3605,7 +3553,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -11541,6 +11489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDeactivate: {fileID: 1535221729}
+  inGameUI: {fileID: 0}
 --- !u!65 &929558391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14997,7 +14946,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1274073489}
-  remainingTime: 10
   hasTimerStarted: 0
 --- !u!114 &1274073489
 MonoBehaviour:
@@ -16425,6 +16373,58 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3160206685436418041, guid: 63e803447acabe0408fa64944eeb6873, type: 3}
   m_PrefabInstance: {fileID: 2138003430}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1436312147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7521164368935415903, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+  m_PrefabInstance: {fileID: 1551550721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1436312152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436312147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5f868cfd931784c915b088dddf1f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.22684194
+      outSlope: 0.22684194
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.042128578
+      value: 0.009556528
+      inSlope: 0.182958
+      outSlope: 0.182958
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.03468208
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.009976838
+      outSlope: -0.009976838
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 0.1
 --- !u!1001 &1443385288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17645,9 +17645,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4938984801476132576, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7521164368935415903, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 77784437}
+      addedObject: {fileID: 1436312152}
   m_SourcePrefab: {fileID: 100100000, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
 --- !u!1 &1552080683 stripped
 GameObject:
@@ -19231,6 +19231,30 @@ PrefabInstance:
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: firingRange
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 198562569527715984, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198562569527715984, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: 'CollisionModule.m_Planes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2038144224}
+    - target: {fileID: 199045536452259280, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199197579551006994, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199448269767181002, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199506469409524458, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
