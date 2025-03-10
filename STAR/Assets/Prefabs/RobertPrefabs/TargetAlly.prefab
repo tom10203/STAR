@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3051909876875671427}
   m_Layer: 0
-  m_Name: TargetHumanBaseRobert
+  m_Name: TargetAlly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 799f1965003d3f84e80dab2d549e6254, type: 2}
+  - {fileID: 2100000, guid: 30d3851bfbfcc4040b4fe4c3d42bc330, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   audio: {fileID: 7821116660504466696}
   hitSound: {fileID: 8300000, guid: ef4dd51396949a64ab064f2b98e91e57, type: 3}
   targetAnim: {fileID: 6819242018419445697}
-  timeToAdd: 2
+  timeToSave: -2
 --- !u!82 &7821116660504466696
 AudioSource:
   m_ObjectHideFlags: 0
