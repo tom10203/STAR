@@ -35,7 +35,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] float crouchSpeed = 7f;
     [SerializeField] private float walkResponse = 25f;
     [SerializeField] private float crouchResponse = 20f;
-    [SerializeField] private float jumpSpeed = 30f;
+    [SerializeField] private float jumpSpeed = 15f;
+    [SerializeField] private float jumpSpeedAdjustment = 2f;
     [SerializeField] private float coyoteTime = 0.2f;
     [SerializeField] private float coyoteTimeSlide = 0.2f;
     [SerializeField] private float airSpeed = 15f;
@@ -44,8 +45,10 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [Space]
     [SerializeField] private float slideStartSpeed = 25f;
     [SerializeField] private float slideStartSpeedFromAir = 35f;
+    [SerializeField] private float slideStartSpeedFromAirAdjustment = 1.5f;
     [SerializeField] private float slideEndSpeed = 15f;
     [SerializeField] private float slideFriction = 0.8f;
+    [SerializeField] private float slideFrictionAdjustment = 0f;
     [SerializeField] private float slideSteerAcceleration = 5f;
     [SerializeField] private float slideGravity = -90f;
     [Range(0,1)]    
@@ -79,6 +82,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     private int health = 10;
 
     Vector3 _storedGroundNormal;
+    int _storedGroundLayer = 0;
+    
     public void Initialise()
     {
         motor.CharacterController = this;
@@ -158,6 +163,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             _timeSinceUngrounded = 0f;
             _ungroundedDueToJump = false;
             _storedGroundNormal = motor.GroundingStatus.GroundNormal;
+            _storedGroundLayer = motor.GroundingStatus.GroundCollider.gameObject.layer;
 
             Debug.Log($"Sotred ground normal {_storedGroundNormal}");
             Debug.Log(motor.GroundingStatus.GroundCollider.gameObject.layer);
@@ -191,6 +197,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                     _state.stance = Stance.Slide;
 
                     var effectiveSlideSpeed = _timeSinceLanded < coyoteTimeSlide ? slideStartSpeedFromAir: slideStartSpeed;
+                    effectiveSlideSpeed = _storedGroundLayer == 11 ? effectiveSlideSpeed * slideStartSpeedFromAirAdjustment : effectiveSlideSpeed;
 
                     if (wasInAir)
                     {
@@ -200,7 +207,6 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                                 planeNormal: motor.GroundingStatus.GroundNormal
                             );
 
-                        //effectiveSlideSpeed = slideStartSpeedFromAir;
                     }
 
                     
@@ -232,7 +238,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             }
             else
             {
-                currentVelocity -= currentVelocity * (slideFriction * deltaTime);
+                var effectiveSlideFriction = _storedGroundLayer == 11 ? slideFriction *  slideFrictionAdjustment : slideFriction;
+                currentVelocity -= currentVelocity * (effectiveSlideFriction * deltaTime);
 
                 {
                     var force = Vector3.ProjectOnPlane
@@ -353,8 +360,12 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
                 motor.ForceUnground(time: 0f);
                 _ungroundedDueToJump = true;
-                var currentVerticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
-                var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, jumpSpeed);
+
+                var currentVerticalSpeed = Vector3.Dot(currentVelocity, _storedGroundNormal);
+                //var currentVerticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
+
+                var effectiveJumpSpeed = _storedGroundLayer == 11 ? jumpSpeed * jumpSpeedAdjustment : jumpSpeed;
+                var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, effectiveJumpSpeed);
                 //currentVelocity += motor.CharacterUp * (targetVerticalSpeed - currentVerticalSpeed);
                 currentVelocity += _storedGroundNormal * (targetVerticalSpeed - currentVerticalSpeed);
             }
