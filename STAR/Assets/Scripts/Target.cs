@@ -31,7 +31,7 @@ public class Target : MonoBehaviour
 
             audio.PlayOneShot(hitSound, 1f);
             targetAnim.SetTrigger("TargetHit");
-            inGameUI.AddToTimer(timeToSave);
+            //inGameUI.AddToTimer(timeToSave);
         }
     }
 }

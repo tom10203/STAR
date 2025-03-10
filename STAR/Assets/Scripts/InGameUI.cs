@@ -7,8 +7,9 @@ public class InGameUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     //float elapsedTime;
     [SerializeField] public float currentTime { get; private set; }
+    [SerializeField] public float targetTime { get; private set; }
 
-    public bool hasTimerStarted = false;
+    private bool hasTimerStarted = false;
     private bool hasTimerStopped = false;
 
     private void Update()
