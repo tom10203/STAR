@@ -4,8 +4,9 @@ public class SpawnMovingLaser : MonoBehaviour
 {
     [SerializeField] GameObject laser;
     [SerializeField] private float spawnRate = 2f;
-    [SerializeField] private float laserDeadZone;
+    [SerializeField] private float laserMoveDistance;
     [SerializeField] private float delay = 0.5f;
+    [SerializeField] private float laserMoveSpeed;
 
     private GameObject currentLaser;
     MovingLaser currentMovingLaser;
@@ -32,6 +33,7 @@ public class SpawnMovingLaser : MonoBehaviour
     {
         currentLaser = Instantiate(laser, transform.position, transform.rotation, transform);
         currentMovingLaser = currentLaser.GetComponent<MovingLaser>();
-        currentMovingLaser.deadZone = laserDeadZone;
+        currentMovingLaser.moveDistance = laserMoveDistance;
+        currentMovingLaser.moveSpeed = laserMoveSpeed;
     }
 }
