@@ -9,13 +9,14 @@ public class InGameUI : MonoBehaviour
     [SerializeField] float remainingTime;
 
     public bool hasTimerStarted = false;
+    private bool hasTimerStopped = false;
 
     private void Update()
     {
-        if (remainingTime > 0) 
+        if (remainingTime > 0)
         {
-          
-            if (hasTimerStarted)
+
+            if (hasTimerStarted && !hasTimerStopped)
             {
                 remainingTime -= Time.deltaTime;
             }
@@ -39,10 +40,10 @@ public class InGameUI : MonoBehaviour
         //timerText.text = string.Format("{0:00} : {1:00}", minuets, seconds);
 
         //Timer countdown
-        
+
         int minuets = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
-        
+
         timerText.text = string.Format("{0:00} : {1:00}", minuets, seconds);
 
 
@@ -50,5 +51,18 @@ public class InGameUI : MonoBehaviour
     }
 
 
+    public void StartTimer()
+    {
+        hasTimerStarted = true;
+    }
 
+    public void StopTimer()
+    {
+        hasTimerStopped = true;
+    }
+
+    public void AddToTimer(float timeToAdd)
+    {
+        remainingTime += timeToAdd;
+    }
 }

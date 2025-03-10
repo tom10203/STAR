@@ -3,10 +3,12 @@ using UnityEngine;
 public class InGameButtons : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject objectToDeactivate;
+    [SerializeField] InGameUI inGameUI;
     public void Interact()
     {
         Debug.Log("start!");
         objectToDeactivate.SetActive(false);
+        inGameUI.StartTimer();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
