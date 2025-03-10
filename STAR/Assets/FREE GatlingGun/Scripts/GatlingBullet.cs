@@ -8,7 +8,13 @@ public class GatlingBullet : MonoBehaviour
         {
             //deal damage
             Debug.Log("PlayerHit");
+            dealDamage();
         }
 
+    }
+
+    void dealDamage()
+    {
+        FindAnyObjectByType<ScreenShake>().start = true;
     }
 }

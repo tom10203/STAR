@@ -14438,8 +14438,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c4c6b88d43a544478b8a676782805a1, type: 2}
-  m_sharedMaterial: {fileID: 2958878079296083941, guid: 6c4c6b88d43a544478b8a676782805a1, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18584,6 +18584,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1290998650998930, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1325511493944930, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -18611,6 +18615,14 @@ PrefabInstance:
     - target: {fileID: 1564198705886454, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564198705886454, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564198705886454, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: m_TagString
+      value: GatlingBullet
       objectReference: {fileID: 0}
     - target: {fileID: 1593440599589168, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: m_Layer
@@ -18720,6 +18732,10 @@ PrefabInstance:
       propertyPath: firingRange
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 198384179842974162, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198562569527715984, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: CollisionModule.type
       value: 1
@@ -18730,7 +18746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198562569527715984, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198562569527715984, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: CollisionModule.collisionMessages
@@ -18746,7 +18762,7 @@ PrefabInstance:
       objectReference: {fileID: 1083815848}
     - target: {fileID: 198562569527715984, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199045536452259280, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: m_Materials.Array.size
@@ -20206,6 +20222,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 379696910200004182, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2487086791694044989, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154856875357587289, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 76d051b6935c8204db13c94ad328d5ae, type: 2}
+    - target: {fileID: 3154856875357587289, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4540670307787135803, guid: 76d051b6935c8204db13c94ad328d5ae, type: 2}
+    - target: {fileID: 3154856875357587289, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5666476685931298359, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
