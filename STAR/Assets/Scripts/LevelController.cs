@@ -37,6 +37,10 @@ public class LevelController : MonoBehaviour
     }
     void LevelCleared()
     {
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         crossHair.SetActive(false);
         if (inGameUI.currentTime > inGameUI.targetTime)
         {
