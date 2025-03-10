@@ -9,13 +9,14 @@ public class InGameUI : MonoBehaviour
     [SerializeField] float remainingTime;
 
     public bool hasTimerStarted = false;
+    private bool hasTimerStopped = false;
 
     private void Update()
     {
         if (remainingTime > 0) 
         {
           
-            if (hasTimerStarted)
+            if (hasTimerStarted && !hasTimerStopped)
             {
                 remainingTime -= Time.deltaTime;
             }
@@ -49,6 +50,16 @@ public class InGameUI : MonoBehaviour
 
     }
 
+
+    public void StartTimer()
+    {
+        hasTimerStarted = true;
+    }
+
+    public void StopTimer()
+    {
+        hasTimerStopped = true;
+    }
 
 
 }
