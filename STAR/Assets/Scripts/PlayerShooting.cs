@@ -70,7 +70,7 @@ public class PlayerShooting : MonoBehaviour
 
             //_lr.SetPosition(0, gunEnd.transform.position);
 
-            if (Physics.Raycast(rayOrigin, playerCam.transform.forward, out hit, range))
+            if (Physics.Raycast(rayOrigin, playerCam.transform.forward, out hit, range, ~(1<<11)))
             {
                 //_lr.SetPosition(1, hit.point);
 
