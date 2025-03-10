@@ -64,16 +64,19 @@ public class GatlingGun : MonoBehaviour
             playerInSight = false;
             canFire = false;
             StopCoroutine(shootSequece());
+            
         }
     }
 
     IEnumerator shootSequece()
     {
+       
+
         yield return new WaitForSeconds(2);
         canFire = true;
         yield return new WaitForSeconds(5);
         canFire = false;
-        StartCoroutine(shootSequece());
+        if(playerInSight)StartCoroutine(shootSequece());
     }
     void AimAndFire()
     {

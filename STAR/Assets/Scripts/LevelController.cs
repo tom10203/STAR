@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour
 {
     //This script should only be attached to the empty LevelControllerObject (child of the exit portal) in each level!
 
-    public float targetTime, currentTime; //This is just pseudo-code for now. I know Steve's working on the timer, so once he's done we can integrate it into this script by using GameObject.FindFirstObjectByType or whatever works best
+    //public float targetTime, currentTime; //This is just pseudo-code for now. I know Steve's working on the timer, so once he's done we can integrate it into this script by using GameObject.FindFirstObjectByType or whatever works best
     public GameObject levelFailed, levelComplete, crossHair;
     public TMP_Text levelCompleteText;
     private InGameUI inGameUI;
@@ -38,14 +38,14 @@ public class LevelController : MonoBehaviour
     void LevelCleared()
     {
         crossHair.SetActive(false);
-        if (inGameUI.currentTime > targetTime)
+        if (inGameUI.currentTime > inGameUI.targetTime)
         {
             levelFailed.SetActive(true);
         }
-        else if (inGameUI.currentTime <= targetTime)
+        else if (inGameUI.currentTime <= inGameUI.targetTime)
         {
             levelComplete.SetActive(true);
-            levelCompleteText.text = "WELL DONE! YOU CLEARED THE LEVEL, AND IT ONLY TOOK YOU " + currentTime.ToString("f2") + " SECONDS!";
+            levelCompleteText.text = "WELL DONE! YOU CLEARED THE LEVEL, AND IT ONLY TOOK YOU " + inGameUI.currentTime.ToString("f2") + " SECONDS!";
         }
     }
     public void RestartLevel()
