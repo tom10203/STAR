@@ -5253,6 +5253,10 @@ PrefabInstance:
       propertyPath: 'm_Cameras.Array.data[0]'
       value: 
       objectReference: {fileID: 3276292281821035030}
+    - target: {fileID: 8335422268027333502, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
+      propertyPath: InteractorSource
+      value: 
+      objectReference: {fileID: 6927376192563864391}
     m_RemovedComponents:
     - {fileID: 418014178948389167, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
     - {fileID: 6504353449676865746, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
