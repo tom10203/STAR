@@ -78,12 +78,15 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     private int health = 10;
 
+    Vector3 _storedGroundNormal;
     public void Initialise()
     {
         motor.CharacterController = this;
         _state.stance = Stance.Stand;
         _lastState = _state;
         _uncrouchOverlapResults = new Collider[8];
+
+        _storedGroundNormal = motor.CharacterUp;
     }
 
     public void UpdateInput(CharacterInput input)
@@ -154,6 +157,10 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         {
             _timeSinceUngrounded = 0f;
             _ungroundedDueToJump = false;
+            _storedGroundNormal = motor.GroundingStatus.GroundNormal;
+
+            Debug.Log($"Sotred ground normal {_storedGroundNormal}");
+            Debug.Log(motor.GroundingStatus.GroundCollider.gameObject.layer);
 
             var groundedMovement = motor.GetDirectionTangentToSurface
             (
@@ -266,13 +273,15 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 var planarMovement = Vector3.ProjectOnPlane
                 (
                     vector: _requestedMovement,
-                    planeNormal: motor.CharacterUp
+                    planeNormal: _storedGroundNormal
+                    //planeNormal: motor.CharacterUp
                 ) * _requestedMovement.magnitude;
 
                 var currentPlanarVelocity = Vector3.ProjectOnPlane
                 (
                     vector: currentVelocity,
-                    planeNormal: motor.CharacterUp
+                    planeNormal: _storedGroundNormal
+                //planeNormal: motor.CharacterUp
                 );
 
                 var movementForce = planarMovement * airAcceleration * deltaTime;
@@ -320,12 +329,14 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
             }
             var effectiveGravity = gravity;
-            var verticalSpeed = Vector3.Dot(motor.CharacterUp, currentVelocity);
+            //var verticalSpeed = Vector3.Dot(motor.CharacterUp, currentVelocity);
+            var verticalSpeed = Vector3.Dot(_storedGroundNormal, currentVelocity);
             if (_requestedSustainedJump && verticalSpeed > 0f)
             {
                 effectiveGravity *= jumpSustainGravity;
             }
-            currentVelocity += motor.CharacterUp * effectiveGravity * deltaTime;
+            //currentVelocity += motor.CharacterUp * effectiveGravity * deltaTime;
+            currentVelocity += _storedGroundNormal * effectiveGravity * deltaTime;
         }
 
 
@@ -344,7 +355,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 _ungroundedDueToJump = true;
                 var currentVerticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
                 var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, jumpSpeed);
-                currentVelocity += motor.CharacterUp * (targetVerticalSpeed - currentVerticalSpeed);
+                //currentVelocity += motor.CharacterUp * (targetVerticalSpeed - currentVerticalSpeed);
+                currentVelocity += _storedGroundNormal * (targetVerticalSpeed - currentVerticalSpeed);
             }
             else
             {
