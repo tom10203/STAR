@@ -31,6 +31,7 @@ public class LevelController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Cursor.visible = true;
             Time.timeScale = 0;
             LevelCleared();
         }
