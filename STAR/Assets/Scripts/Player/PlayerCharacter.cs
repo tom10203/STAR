@@ -35,7 +35,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [SerializeField] float crouchSpeed = 7f;
     [SerializeField] private float walkResponse = 25f;
     [SerializeField] private float crouchResponse = 20f;
-    [SerializeField] private float jumpSpeed = 30f;
+    [SerializeField] private float jumpSpeed = 15f;
+    [SerializeField] private float jumpSpeedAdjustment = 2f;
     [SerializeField] private float coyoteTime = 0.2f;
     [SerializeField] private float coyoteTimeSlide = 0.2f;
     [SerializeField] private float airSpeed = 15f;
@@ -44,8 +45,10 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     [Space]
     [SerializeField] private float slideStartSpeed = 25f;
     [SerializeField] private float slideStartSpeedFromAir = 35f;
+    [SerializeField] private float slideStartSpeedFromAirAdjustment = 1.5f;
     [SerializeField] private float slideEndSpeed = 15f;
     [SerializeField] private float slideFriction = 0.8f;
+    [SerializeField] private float slideFrictionAdjustment = 0f;
     [SerializeField] private float slideSteerAcceleration = 5f;
     [SerializeField] private float slideGravity = -90f;
     [Range(0,1)]    
@@ -78,12 +81,17 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
     private int health = 10;
 
+    Vector3 _storedGroundNormal;
+    int _storedGroundLayer = 0;
+    
     public void Initialise()
     {
         motor.CharacterController = this;
         _state.stance = Stance.Stand;
         _lastState = _state;
         _uncrouchOverlapResults = new Collider[8];
+
+        _storedGroundNormal = motor.CharacterUp;
     }
 
     public void UpdateInput(CharacterInput input)
@@ -154,6 +162,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         {
             _timeSinceUngrounded = 0f;
             _ungroundedDueToJump = false;
+            _storedGroundNormal = motor.GroundingStatus.GroundNormal;
+            _storedGroundLayer = motor.GroundingStatus.GroundCollider.gameObject.layer;
 
             var groundedMovement = motor.GetDirectionTangentToSurface
             (
@@ -184,6 +194,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                     _state.stance = Stance.Slide;
 
                     var effectiveSlideSpeed = _timeSinceLanded < coyoteTimeSlide ? slideStartSpeedFromAir: slideStartSpeed;
+                    effectiveSlideSpeed = _storedGroundLayer == 11 ? effectiveSlideSpeed * slideStartSpeedFromAirAdjustment : effectiveSlideSpeed;
 
                     if (wasInAir)
                     {
@@ -193,7 +204,6 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                                 planeNormal: motor.GroundingStatus.GroundNormal
                             );
 
-                        //effectiveSlideSpeed = slideStartSpeedFromAir;
                     }
 
                     
@@ -225,7 +235,8 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             }
             else
             {
-                currentVelocity -= currentVelocity * (slideFriction * deltaTime);
+                var effectiveSlideFriction = _storedGroundLayer == 11 ? slideFriction *  slideFrictionAdjustment : slideFriction;
+                currentVelocity -= currentVelocity * (effectiveSlideFriction * deltaTime);
 
                 {
                     var force = Vector3.ProjectOnPlane
@@ -266,13 +277,15 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 var planarMovement = Vector3.ProjectOnPlane
                 (
                     vector: _requestedMovement,
-                    planeNormal: motor.CharacterUp
+                    planeNormal: _storedGroundNormal
+                    //planeNormal: motor.CharacterUp
                 ) * _requestedMovement.magnitude;
 
                 var currentPlanarVelocity = Vector3.ProjectOnPlane
                 (
                     vector: currentVelocity,
-                    planeNormal: motor.CharacterUp
+                    planeNormal: _storedGroundNormal
+                //planeNormal: motor.CharacterUp
                 );
 
                 var movementForce = planarMovement * airAcceleration * deltaTime;
@@ -320,12 +333,14 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
 
             }
             var effectiveGravity = gravity;
-            var verticalSpeed = Vector3.Dot(motor.CharacterUp, currentVelocity);
+            //var verticalSpeed = Vector3.Dot(motor.CharacterUp, currentVelocity);
+            var verticalSpeed = Vector3.Dot(_storedGroundNormal, currentVelocity);
             if (_requestedSustainedJump && verticalSpeed > 0f)
             {
                 effectiveGravity *= jumpSustainGravity;
             }
-            currentVelocity += motor.CharacterUp * effectiveGravity * deltaTime;
+            //currentVelocity += motor.CharacterUp * effectiveGravity * deltaTime;
+            currentVelocity += _storedGroundNormal * effectiveGravity * deltaTime;
         }
 
 
@@ -343,10 +358,13 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
                 motor.ForceUnground(time: 0f);
                 _ungroundedDueToJump = true;
 
-                var currentVerticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
-                var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, jumpSpeed);
+                var currentVerticalSpeed = Vector3.Dot(currentVelocity, _storedGroundNormal);
+                //var currentVerticalSpeed = Vector3.Dot(currentVelocity, motor.CharacterUp);
 
-                currentVelocity += motor.CharacterUp * (targetVerticalSpeed - currentVerticalSpeed);
+                var effectiveJumpSpeed = _storedGroundLayer == 11 ? jumpSpeed * jumpSpeedAdjustment : jumpSpeed;
+                var targetVerticalSpeed = Mathf.Max(currentVerticalSpeed, effectiveJumpSpeed);
+                //currentVelocity += motor.CharacterUp * (targetVerticalSpeed - currentVerticalSpeed);
+                currentVelocity += _storedGroundNormal * (targetVerticalSpeed - currentVerticalSpeed);
             }
             else
             {

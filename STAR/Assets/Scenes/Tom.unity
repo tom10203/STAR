@@ -383,6 +383,7 @@ MonoBehaviour:
   laser: {fileID: 1152726972512369089, guid: 97bfe2aa19282b348b27eeb6dfaf9365, type: 3}
   spawnRate: 5
   laserDeadZone: -16.25
+  delay: 0.5
 --- !u!1001 &87201733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6496,7 +6497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787116826}
   - component: {fileID: 1787116825}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Level2Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8325,6 +8326,26 @@ PrefabInstance:
     - target: {fileID: 1574773394560318303, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609304397568250279, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: coyoteTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609304397568250279, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: jumpSpeedAdjustment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609304397568250279, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: jumpsSpeedAdjustment
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609304397568250279, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: slideFrictionAdjustment
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609304397568250279, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: slideStartSpeedFromAirAdjustment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2623280522510420245, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
       propertyPath: m_Name

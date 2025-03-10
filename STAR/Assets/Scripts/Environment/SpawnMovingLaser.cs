@@ -5,6 +5,7 @@ public class SpawnMovingLaser : MonoBehaviour
     [SerializeField] GameObject laser;
     [SerializeField] private float spawnRate = 2f;
     [SerializeField] private float laserDeadZone;
+    [SerializeField] private float delay = 0.5f;
 
     private GameObject currentLaser;
     MovingLaser currentMovingLaser;
@@ -12,6 +13,7 @@ public class SpawnMovingLaser : MonoBehaviour
     void Start()
     {
         InstantiateLaser(); 
+        timer = spawnRate * delay;
     }
 
     void Update()
