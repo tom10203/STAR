@@ -165,9 +165,6 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
             _storedGroundNormal = motor.GroundingStatus.GroundNormal;
             _storedGroundLayer = motor.GroundingStatus.GroundCollider.gameObject.layer;
 
-            Debug.Log($"Sotred ground normal {_storedGroundNormal}");
-            Debug.Log(motor.GroundingStatus.GroundCollider.gameObject.layer);
-
             var groundedMovement = motor.GetDirectionTangentToSurface
             (
                 direction: _requestedMovement,
