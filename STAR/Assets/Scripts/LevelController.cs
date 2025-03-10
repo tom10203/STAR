@@ -10,11 +10,13 @@ public class LevelController : MonoBehaviour
     public float targetTime, currentTime; //This is just pseudo-code for now. I know Steve's working on the timer, so once he's done we can integrate it into this script by using GameObject.FindFirstObjectByType or whatever works best
     public GameObject levelFailed, levelComplete, crossHair;
     public TMP_Text levelCompleteText;
+    private InGameUI inGameUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Time.timeScale = 1;
+        inGameUI = FindAnyObjectByType<InGameUI>();
     }
 
     // Update is called once per frame
@@ -29,20 +31,19 @@ public class LevelController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Time.timeScale = 0;
             LevelCleared();
         }
     }
     void LevelCleared()
     {
         crossHair.SetActive(false);
-        if (currentTime > targetTime)
+        if (inGameUI.currentTime > targetTime)
         {
-            Time.timeScale = 0;
             levelFailed.SetActive(true);
         }
-        if (currentTime < targetTime)
+        else if (inGameUI.currentTime <= targetTime)
         {
-            Time.timeScale = 0;
             levelComplete.SetActive(true);
             levelCompleteText.text = "WELL DONE! YOU CLEARED THE LEVEL, AND IT ONLY TOOK YOU " + currentTime.ToString("f2") + " SECONDS!";
         }

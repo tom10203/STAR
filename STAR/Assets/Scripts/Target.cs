@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
     [SerializeField] AudioClip hitSound;
     [SerializeField] Animator targetAnim;
     private bool gotHit = false;
-    [SerializeField] float timeToAdd = 2f;
+    [SerializeField] float timeToSave = 2f;
     private InGameUI inGameUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +31,7 @@ public class Target : MonoBehaviour
 
             audio.PlayOneShot(hitSound, 1f);
             targetAnim.SetTrigger("TargetHit");
-            inGameUI.AddToTimer(timeToAdd);
+            inGameUI.AddToTimer(timeToSave);
         }
     }
 }
