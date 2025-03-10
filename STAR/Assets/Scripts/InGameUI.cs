@@ -6,29 +6,22 @@ public class InGameUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     //float elapsedTime;
-    [SerializeField] float remainingTime;
+    [SerializeField] public float currentTime { get; private set; }
 
     public bool hasTimerStarted = false;
     private bool hasTimerStopped = false;
 
     private void Update()
     {
-        if (remainingTime > 0)
+
+
+        if (hasTimerStarted && !hasTimerStopped)
         {
-
-            if (hasTimerStarted && !hasTimerStopped)
-            {
-                remainingTime -= Time.deltaTime;
-            }
+            currentTime += Time.deltaTime;
         }
-        else
-        {
-            remainingTime = 0;
-            //Gameover();
+      
+            //timerText.color = Color.red;
 
-            timerText.color = Color.red;
-
-        }
 
 
 
@@ -41,8 +34,8 @@ public class InGameUI : MonoBehaviour
 
         //Timer countdown
 
-        int minuets = Mathf.FloorToInt(remainingTime / 60);
-        int seconds = Mathf.FloorToInt(remainingTime % 60);
+        int minuets = Mathf.FloorToInt(currentTime / 60);
+        int seconds = Mathf.FloorToInt(currentTime % 60);
 
         timerText.text = string.Format("{0:00} : {1:00}", minuets, seconds);
 
@@ -61,8 +54,8 @@ public class InGameUI : MonoBehaviour
         hasTimerStopped = true;
     }
 
-    public void AddToTimer(float timeToAdd)
+    public void AddToTimer(float timeToSave)
     {
-        remainingTime += timeToAdd;
+        currentTime -= timeToSave;
     }
 }
