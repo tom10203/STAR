@@ -34,6 +34,7 @@ public class RobotEnemy : MonoBehaviour
     private bool dead = false;
     [SerializeField] private Collider coll;
     [SerializeField] private AudioSource audio;
+    private ActivatePortal activatePortalScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,6 +60,9 @@ public class RobotEnemy : MonoBehaviour
             searchTimer = 0f;
             shootDelayTimer = 0f;
         }
+
+
+        activatePortalScript = FindAnyObjectByType<ActivatePortal>();
     }
 
     // Update is called once per frame
@@ -211,6 +215,11 @@ public class RobotEnemy : MonoBehaviour
         StartCoroutine(KillLasers());
         coll.enabled = false;
         navAgent.enabled = false;
+
+        if (activatePortalScript != null)
+        {
+            activatePortalScript.AddPortalPoint();
+        }
     }
     void DieHeadshot()
     {
@@ -220,6 +229,11 @@ public class RobotEnemy : MonoBehaviour
         StartCoroutine(KillLasers());
         coll.enabled = false;
         navAgent.enabled = false;
+
+        if (activatePortalScript != null)
+        {
+            activatePortalScript.AddPortalPoint();
+        }
     }
 
     void Animations()

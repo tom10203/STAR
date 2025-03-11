@@ -9,11 +9,13 @@ public class Target : MonoBehaviour
     private bool gotHit = false;
     [SerializeField] float timeToSave = 2f;
     private InGameUI inGameUI;
+    private ActivatePortal activatePortalScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inGameUI = FindAnyObjectByType<InGameUI>();
+        activatePortalScript = FindAnyObjectByType<ActivatePortal>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,10 @@ public class Target : MonoBehaviour
             audio.PlayOneShot(hitSound, 1f);
             targetAnim.SetTrigger("TargetHit");
             inGameUI.AddToTimer(timeToSave);
+            if (activatePortalScript != null)
+            {
+                activatePortalScript.AddPortalPoint();
+            }
         }
     }
 }

@@ -1,16 +1,38 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class InGameUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] TextMeshProUGUI targetTimeText;
     //float elapsedTime;
     [SerializeField] public float currentTime { get; private set; }
     [SerializeField] public float targetTime { get; private set; }
 
+    [SerializeField] private TMP_Text targetText;
+    [SerializeField] private float targetTimeInSeconds;
     private bool hasTimerStarted = false;
     private bool hasTimerStopped = false;
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("BestTime" + SceneManager.GetActiveScene().name))
+        {
+            targetText.text = "BEST TIME";
+            targetTime = PlayerPrefs.GetFloat("BestTime" + SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            targetText.text = "TARGET";
+            targetTime = targetTimeInSeconds;
+        }
+
+        int minuets = Mathf.FloorToInt(targetTime / 60);
+        int seconds = Mathf.FloorToInt(targetTime % 60);
+        targetTimeText.text = string.Format("{0:00} : {1:00}", minuets, seconds);
+    }
 
     private void Update()
     {
