@@ -19,18 +19,32 @@ public class ScreenShake : MonoBehaviour
 
     IEnumerator Shaking()
     {
-        Vector3 startPosition = transform.position;
-        float  elapsedTime = 0f;
+        //Vector3 startPosition = transform.position;
+        //float  elapsedTime = 0f;
+
+        //while (elapsedTime < duration)
+        //{
+        //    elapsedTime += Time.deltaTime;
+        //    float strength = curve.Evaluate(elapsedTime / duration);
+        //    transform.position = startPosition + Random.insideUnitSphere * strength;
+        //    yield return null;
+        //}
+
+        //transform.position = startPosition;
+
+        float startFOV = Camera.main.fieldOfView;
+        float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float strength = curve.Evaluate(elapsedTime / duration);
-            transform.position = startPosition + Random.insideUnitSphere * strength;
+            Camera.main.fieldOfView = startFOV + Random.Range(-5,5) * strength;
             yield return null;
         }
 
-        transform.position = startPosition;
+        Camera.main.fieldOfView = startFOV;
+
 
     }
 }
