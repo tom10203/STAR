@@ -11,6 +11,10 @@ public class Target : MonoBehaviour
     private InGameUI inGameUI;
     private ActivatePortal activatePortalScript;
 
+    [SerializeField] private ParticleSystem minus2PE;
+    [SerializeField] private ParticleSystem plus2PE;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +41,19 @@ public class Target : MonoBehaviour
             if (activatePortalScript != null)
             {
                 activatePortalScript.AddPortalPoint();
+            }
+
+            if (timeToSave > 0f)
+            {
+                ParticleSystem plus2 = Instantiate(plus2PE, transform.position, Quaternion.identity);
+                plus2.Play();
+                Destroy(plus2, 2);
+            }
+            else
+            {
+                ParticleSystem minus2 = Instantiate(minus2PE, transform.position, Quaternion.identity);
+                minus2.Play();
+                Destroy(minus2, 2);
             }
         }
     }
