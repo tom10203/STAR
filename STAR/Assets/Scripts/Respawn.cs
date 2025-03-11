@@ -10,7 +10,6 @@ public class Respawn : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("YOO HOO");
             //other.transform.position = respawnPoint.transform.position;
 
             KinematicCharacterMotor motor = FindAnyObjectByType<KinematicCharacterMotor>();
