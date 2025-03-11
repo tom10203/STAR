@@ -71,7 +71,6 @@ public class LevelController : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
-        Debug.Log($"Button clicked");
         SceneManager.LoadScene(0);
     }
 }
