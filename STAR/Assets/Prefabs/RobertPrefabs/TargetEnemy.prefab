@@ -136,7 +136,9 @@ MonoBehaviour:
   audio: {fileID: 7821116660504466696}
   hitSound: {fileID: 8300000, guid: ef4dd51396949a64ab064f2b98e91e57, type: 3}
   targetAnim: {fileID: 6819242018419445697}
-  timeToAdd: 2
+  timeToSave: 2
+  minus2PE: {fileID: 1666163481727977279, guid: 36041f50399807c42bf3a064a7a13a08, type: 3}
+  plus2PE: {fileID: 0}
 --- !u!82 &7821116660504466696
 AudioSource:
   m_ObjectHideFlags: 0
