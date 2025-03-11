@@ -18,6 +18,7 @@ public class InGameUI : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         if (PlayerPrefs.HasKey("BestTime" + SceneManager.GetActiveScene().name))
         {
             targetText.text = "BEST TIME";
