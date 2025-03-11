@@ -12,6 +12,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float sensitivity = 0.1f;
     public void Initialise(Transform target)
     {
+        sensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
         transform.position = target.position;
         transform.eulerAngles = _eulerAngles = target.eulerAngles;
     }
