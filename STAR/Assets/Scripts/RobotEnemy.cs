@@ -169,6 +169,14 @@ public class RobotEnemy : MonoBehaviour
                     shooting = true;
                     delayingshoot = false;
                     shootDelayTimer = 0f;
+                    RaycastHit hit2;
+                    if (Physics.Raycast(head.transform.position, (shootpos - head.transform.position).normalized, out hit2, 300f, layerMask, QueryTriggerInteraction.Ignore))
+                    {
+                        if (hit2.collider.CompareTag("Player"))
+                        {
+                            player.TakeDamage(1);
+                        }
+                    }
                 }
             }
         }
@@ -177,8 +185,8 @@ public class RobotEnemy : MonoBehaviour
         {
             laserL.SetPosition(0, eyeL.position);
             laserR.SetPosition(0, eyeR.position);
-            laserL.SetPosition(1, shootpos + (shootpos - eyeL.position));
-            laserR.SetPosition(1, shootpos + (shootpos - eyeR.position));
+            laserL.SetPosition(1, eyeL.position + (shootpos - eyeL.position).normalized * 300);
+            laserR.SetPosition(1, eyeR.position + (shootpos - eyeR.position).normalized * 300);
             laserL.enabled = true;
             laserR.enabled = true;
             if (shootingTimer < shootingTime)

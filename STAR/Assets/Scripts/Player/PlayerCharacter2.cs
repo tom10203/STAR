@@ -1,5 +1,7 @@
 using KinematicCharacterController2;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCharacter2 : MonoBehaviour, ICharacterController
 {
@@ -23,9 +25,9 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     [SerializeField] private float slideFriction = 0.8f;
     [SerializeField] private float slideSteerAcceleration = 5f;
     [SerializeField] private float slideGravity = -90f;
-    [Range(0,1)]    
+    [Range(0, 1)]
     [SerializeField] private float jumpSustainGravity = 0.4f;
-    
+
     [SerializeField] float standHeight = 1f;
     [SerializeField] float crouchHeight = 0.5f;
     [SerializeField] private float crouchHeightResponse = 15f;
@@ -52,6 +54,11 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     private Collider[] _uncrouchOverlapResults;
 
     private int health = 10;
+    private PlayerInput playerInput;
+    private PlayerShooting playerShooting;
+    [SerializeField] private TMP_Text healthText;
+    public GameObject levelFailed, crossHair, failedIcon;
+    public TMP_Text levelFailedText;
 
     public void Initialise()
     {
@@ -59,12 +66,20 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
         _state.stance = Stance.Stand;
         _lastState = _state;
         _uncrouchOverlapResults = new Collider[8];
+
+        playerInput = transform.parent.GetComponent<PlayerInput>();
+        playerShooting = transform.parent.GetComponent<PlayerShooting>();
+
+        if (healthText != null)
+        {
+            healthText.text = "HEALTH: " + health;
+        }
     }
 
     public void UpdateInput(CharacterInput input)
     {
         _requestedRotation = input.rotation;
-        _requestedMovement = new Vector3 (input.move.x, 0, input.move.y);
+        _requestedMovement = new Vector3(input.move.x, 0, input.move.y);
         _requestedMovement = Vector3.ClampMagnitude(_requestedMovement, 1f);
         _requestedMovement = input.rotation * _requestedMovement;
         var wasRequestingJump = _requestedJump;
@@ -107,7 +122,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
         root.localScale = Vector3.Lerp(root.localScale, rootTargetScale, 1f - Mathf.Exp(-crouchHeightResponse * deltaTime));
     }
 
-    public void UpdateRotation(ref Quaternion currentRotation, float deltaTime) 
+    public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
         var forward = Vector3.ProjectOnPlane(_requestedRotation * Vector3.up, motor.CharacterUp);
 
@@ -121,7 +136,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     /// <summary>
     /// This is called when the motor wants to know what its velocity should be right now
     /// </summary>
-    public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime) 
+    public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
     {
         _state.acceleration = Vector3.zero;
 
@@ -158,7 +173,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
                 {
                     _state.stance = Stance.Slide;
 
-                    var effectiveSlideSpeed = _timeSinceLanded < coyoteTimeSlide ? slideStartSpeedFromAir: slideStartSpeed;
+                    var effectiveSlideSpeed = _timeSinceLanded < coyoteTimeSlide ? slideStartSpeedFromAir : slideStartSpeed;
 
                     if (wasInAir)
                     {
@@ -171,7 +186,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
                         //effectiveSlideSpeed = slideStartSpeedFromAir;
                     }
 
-                    
+
                     if (!_lastState.grounded && !_requestedCrouchInAir)
                     {
                         effectiveSlideSpeed = 0f;
@@ -184,10 +199,10 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
                         surfaceNormal: motor.GroundingStatus.GroundNormal
                     ) * slideSpeed;
                 }
-            } 
+            }
             if (_state.stance is Stance.Stand or Stance.Crouch)
             {
-                
+
 
                 var speed = _state.stance is Stance.Stand ? walkSpeed : crouchSpeed;
                 var response = _state.stance is Stance.Stand ? walkResponse : crouchResponse;
@@ -220,7 +235,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
                     steerVelocity += steeringForce;
                     steerVelocity = Vector3.ClampMagnitude(steerVelocity, currentSpeed);
 
-                    _state.acceleration = (steerVelocity - currentVelocity)/ deltaTime;
+                    _state.acceleration = (steerVelocity - currentVelocity) / deltaTime;
 
                     currentVelocity = steerVelocity;
                 }
@@ -336,7 +351,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     /// <summary>
     /// This is called before the motor does anything
     /// </summary>
-    public void BeforeCharacterUpdate(float deltaTime) 
+    public void BeforeCharacterUpdate(float deltaTime)
     {
         _tempState = _state;
         if (_requestedCrouch && _state.stance is Stance.Stand)
@@ -353,7 +368,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     /// <summary>
     /// This is called after the motor has finished its ground probing, but before PhysicsMover/Velocity/etc.... handling
     /// </summary>
-    public void PostGroundingUpdate(float deltaTime) 
+    public void PostGroundingUpdate(float deltaTime)
     {
         if (!motor.GroundingStatus.IsStableOnGround && _state.stance is Stance.Stand)
         {
@@ -363,7 +378,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     /// <summary>
     /// This is called after the motor has finished everything in its update
     /// </summary>
-    public void AfterCharacterUpdate(float deltaTime) 
+    public void AfterCharacterUpdate(float deltaTime)
     {
         if (!_requestedCrouch && _state.stance is not Stance.Stand)
         {
@@ -417,7 +432,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     public void OnDiscreteCollisionDetected(Collider hitCollider) { }
     public Transform GetCameraTarget() => cameraTarget;
 
-    public void SetPosition(Vector3 position, bool killVelocity = true) 
+    public void SetPosition(Vector3 position, bool killVelocity = true)
     {
         motor.SetPosition(position);
         if (killVelocity)
@@ -433,6 +448,30 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     {
         //Debug.Log("Player got hit for " + damage + " damage");
         health -= damage;
-    }
 
+        if (healthText != null)
+        {
+            healthText.text = "HEALTH: " + health;
+        }
+
+        if (health <= 0)
+        {
+            playerInput.enabled = false;
+            playerShooting.enabled = false;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (crossHair != null)
+            {
+                crossHair.SetActive(false);
+            }
+            if (levelFailed != null)
+            {
+                failedIcon.SetActive(false);
+                levelFailedText.text = "YOU DIED! TRY AGAIN?";
+                levelFailed.SetActive(true);
+            }
+        }
+    }
 }
