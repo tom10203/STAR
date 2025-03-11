@@ -16,5 +16,6 @@ public class GatlingBullet : MonoBehaviour
     void dealDamage()
     {
         FindAnyObjectByType<ScreenShake>().start = true;
+        FindAnyObjectByType<PlayerCharacter>().TakeDamage(1);
     }
 }
