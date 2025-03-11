@@ -59,6 +59,8 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     [SerializeField] private TMP_Text healthText;
     public GameObject levelFailedDied, crossHair;
 
+    private InGameUI inGameUI;
+
     public void Initialise()
     {
         motor.CharacterController = this;
@@ -73,6 +75,8 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
         {
             healthText.text = "HEALTH: " + health;
         }
+
+        inGameUI = FindAnyObjectByType<InGameUI>();
     }
 
     public void UpdateInput(CharacterInput input)
@@ -469,6 +473,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
             {
                 levelFailedDied.SetActive(true);
             }
+            inGameUI.StopTimer();
         }
     }
 }
