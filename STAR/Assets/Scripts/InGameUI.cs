@@ -46,7 +46,10 @@ public class InGameUI : MonoBehaviour
             //timerText.color = Color.red;
 
 
-
+        if(currentTime < 0)
+        {
+            currentTime = 0;
+        }
 
 
         //Timer counting up from 00:00
