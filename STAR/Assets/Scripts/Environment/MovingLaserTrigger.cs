@@ -12,7 +12,6 @@ public class MovingLaserTrigger : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
-            Debug.Log($"Player hit laser");
             KinematicCharacterMotor motor = other.GetComponent<KinematicCharacterMotor>();
             motor.SetPosition(respawnManager.lastRespawnPoint.position);
             motor.SetRotation(respawnManager.lastRespawnPoint.rotation);
