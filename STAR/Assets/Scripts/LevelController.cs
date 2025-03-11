@@ -14,9 +14,11 @@ public class LevelController : MonoBehaviour
     public GameObject player;
 
     public PlayerCharacter playerCharacter;
+    public PlayerCharacter2 playerCharacter2;
     public PlayerShooting shooting;
     public PlayerCamera playerCamera;
     public Player playerScript;
+    public Player2 playerScript2;
 
     void Start()
     {
@@ -36,10 +38,27 @@ public class LevelController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            playerCharacter.enabled = false;
+            if (playerCharacter)
+            {
+                playerCharacter.enabled = false;
+            }
+            if (playerCharacter2)
+            {
+                playerCharacter2.enabled = false;
+            }
+
             shooting.enabled = false;
             playerCamera.enabled = false;
-            playerScript.enabled = false;
+
+            if (playerScript)
+            {
+                playerScript.enabled = false;
+            }
+            if (playerScript2)
+            {
+                playerScript2.enabled = false;
+            }
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             //Time.timeScale = 0;
