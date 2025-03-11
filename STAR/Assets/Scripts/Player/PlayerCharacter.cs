@@ -79,7 +79,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     private bool _increaseTimeSinceLanded;
     private Collider[] _uncrouchOverlapResults;
 
-    private int health = 10;
+    public int health = 100;
 
     Vector3 _storedGroundNormal;
     int _storedGroundLayer = 0;
