@@ -15,7 +15,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private float targetTimeInSeconds;
     private bool hasTimerStarted = false;
     private bool hasTimerStopped = false;
-
+    [SerializeField] GameObject targetsCanvas, healthCanvas;
     private void Start()
     {
         if (PlayerPrefs.HasKey("BestTime" + SceneManager.GetActiveScene().name))
@@ -75,6 +75,18 @@ public class InGameUI : MonoBehaviour
     public void StopTimer()
     {
         hasTimerStopped = true;
+
+        targetTimeText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
+
+        if (targetsCanvas != null)
+        {
+            targetsCanvas.SetActive(false);
+        }
+        if (healthCanvas != null)
+        {
+            healthCanvas.SetActive(false);
+        }
     }
 
     public void AddToTimer(float timeToSave)
