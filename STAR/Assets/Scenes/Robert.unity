@@ -18256,6 +18256,14 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7180201971582053077, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
+      propertyPath: healthCanvas
+      value: 
+      objectReference: {fileID: 1756430431}
+    - target: {fileID: 7180201971582053077, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
+      propertyPath: targetsCanvas
+      value: 
+      objectReference: {fileID: 5059965680197707568}
+    - target: {fileID: 7180201971582053077, guid: 569b78141c91a194fa2f64d63676c013, type: 3}
       propertyPath: targetTimeInSeconds
       value: 41
       objectReference: {fileID: 0}
@@ -20861,7 +20869,7 @@ GameObject:
   - component: {fileID: 3866236527152709191}
   - component: {fileID: 8707896985730346309}
   m_Layer: 5
-  m_Name: TargetsLefrCanvas
+  m_Name: TargetsLeftCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
