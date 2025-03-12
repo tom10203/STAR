@@ -70,8 +70,11 @@ public class PlayerShooting : MonoBehaviour
 
         if (raycast)
         {
-            crossHairsCanvas.color = Color.red;
-            
+            if (hit.collider.gameObject.layer != 2 && hit.collider.gameObject.layer != 11)
+            {
+                crossHairsCanvas.color = Color.red;
+            }
+
             if (hit.collider.CompareTag("Target"))
             {
                 Renderer rend = hit.transform.GetComponent<Renderer>();
