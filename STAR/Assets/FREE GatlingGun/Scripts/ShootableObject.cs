@@ -2,15 +2,31 @@ using UnityEngine;
 
 public class ShootableObject : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int health;
+    public GameObject gattlingGun;
+
+
+    private void Update()
     {
-        
+        if (health <= 0)
+        {
+            gattlingGun.GetComponent<GatlingGun>().enabled = false;
+            //troy(gattlingGun);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void takeDamage(int damage)
     {
-        
+        health -= damage;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        ShootableObject shootableObject = collision.gameObject.GetComponent<ShootableObject>();
+
+        if (shootableObject != null)
+        {
+            //shootableObject.TakeDamage(damage);
+        }
+        Destroy(gameObject);
     }
 }

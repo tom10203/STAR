@@ -63,7 +63,6 @@ public class PlayerShooting : MonoBehaviour
 
         Vector3 rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
- 
         bool raycast = Physics.Raycast(rayOrigin, playerCam.transform.forward, out hit, range, ~(ignoreRaycast));
 
         bulletStartPoint = rayOrigin;
@@ -71,11 +70,8 @@ public class PlayerShooting : MonoBehaviour
 
         if (raycast)
         {
-            if (hit.transform.gameObject.layer != 2 && hit.transform.gameObject.layer != 11)
-            {
-                crossHairsCanvas.color = Color.red;
-            }
-
+            crossHairsCanvas.color = Color.red;
+            
             if (hit.collider.CompareTag("Target"))
             {
                 Renderer rend = hit.transform.GetComponent<Renderer>();
@@ -106,6 +102,10 @@ public class PlayerShooting : MonoBehaviour
 
             if (raycast)
             {
+                if (hit.transform.GetComponent<ShootableObject>() != null)
+                {
+                    hit.transform.GetComponent<ShootableObject>().takeDamage(gunDamage);
+                }
                 if (hit.collider.CompareTag("Target"))
                 {
 

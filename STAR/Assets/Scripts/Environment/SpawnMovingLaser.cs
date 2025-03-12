@@ -11,10 +11,12 @@ public class SpawnMovingLaser : MonoBehaviour
     private GameObject currentLaser;
     MovingLaser currentMovingLaser;
     private float timer = 0f;
+
     void Start()
     {
+        
         InstantiateLaser(); 
-        timer = spawnRate * delay;
+        timer = Time.time + spawnRate * delay;
     }
 
     void Update()
