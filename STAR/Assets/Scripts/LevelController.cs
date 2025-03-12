@@ -2,13 +2,14 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor.Profiling;
 
 public class LevelController : MonoBehaviour
 {
     //This script should only be attached to the empty LevelControllerObject (child of the exit portal) in each level!
 
     //public float targetTime, currentTime; //This is just pseudo-code for now. I know Steve's working on the timer, so once he's done we can integrate it into this script by using GameObject.FindFirstObjectByType or whatever works best
-    public GameObject levelFailed, levelComplete, crossHair;
+    public GameObject levelFailed, levelComplete, pauseMenu, crossHair;
     public TMP_Text levelCompleteText;
     private InGameUI inGameUI;
     public GameObject player;
@@ -19,6 +20,8 @@ public class LevelController : MonoBehaviour
     public PlayerCamera playerCamera;
     public Player playerScript;
     public Player2 playerScript2;
+
+    [SerializeField] bool isPaused = false;
 
     void Start()
     {
@@ -32,6 +35,17 @@ public class LevelController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) //feel free to change this if we use the new input system or decide to go for a GetButtonDown("Restart") way of doing this
         {
             RestartLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!isPaused)
+            {
+                PauseMenu();
+            }
+            else
+            {
+                ResumeGame();
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -92,5 +106,59 @@ public class LevelController : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    void PauseMenu()
+    {
+        isPaused = true;
+        pauseMenu.SetActive(true);
+        crossHair.SetActive(false);
+        Time.timeScale = 0; //if we're not using this to stop the level anymore, we probably need a function in InGameUI to pause and restart the timer.
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (playerCharacter)
+        {
+            playerCharacter.enabled = false;
+        }
+        if (playerCharacter2)
+        {
+            playerCharacter2.enabled = false;
+        }
+        if (playerScript)
+        {
+            playerScript.enabled = false;
+        }
+        if (playerScript2)
+        {
+            playerScript2.enabled = false;
+        }
+        shooting.enabled = false;
+        playerCamera.enabled = false;
+    }
+    public void ResumeGame()
+    {
+        isPaused = false;
+        pauseMenu.SetActive(false);
+        crossHair.SetActive(true);
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        if (playerCharacter)
+        {
+            playerCharacter.enabled = true;
+        }
+        if (playerCharacter2)
+        {
+            playerCharacter2.enabled = true;
+        }
+        if (playerScript)
+        {
+            playerScript.enabled = true;
+        }
+        if (playerScript2)
+        {
+            playerScript2.enabled = true;
+        }
+        shooting.enabled = true;
+        playerCamera.enabled = true;
     }
 }
