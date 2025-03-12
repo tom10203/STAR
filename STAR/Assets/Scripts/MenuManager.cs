@@ -18,6 +18,8 @@ public class MenuManager : MonoBehaviour
     public Slider mouseSlider;
     //Must remember to make sure the mouse sensitivity variable in the player script is set to PlayerPrefs.GetFloat("mouseSensitivity") in its start function
 
+    private AudioSource buttonAudio;
+
     private void Awake()
     {
         if (Instance != null)
@@ -50,6 +52,8 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetFloat("mouseSensitivity", 0.1f); //just using template values here for now, feel free to change this and the slider settings in the inspector based on how it feels in-game
         }
         LoadMouse();
+
+        buttonAudio = GetComponent<AudioSource>();
         #endregion
     }
     #region Volume Functions
@@ -94,18 +98,22 @@ public class MenuManager : MonoBehaviour
     //This probably isn't the ideal way of doing this, but it's quick and easy!
     public void Level1()
     {
+        buttonAudio.PlayOneShot(buttonAudio.clip);
         SceneManager.LoadScene(1);
     }
     public void Level2()
     {
+        buttonAudio.PlayOneShot(buttonAudio.clip);
         SceneManager.LoadScene(2);
     }
     public void Level3()
     {
+        buttonAudio.PlayOneShot(buttonAudio.clip);
         SceneManager.LoadScene(3);
     }
     public void Level4()
     {
+        buttonAudio.PlayOneShot(buttonAudio.clip);
         SceneManager.LoadScene(4);
     }
     #endregion

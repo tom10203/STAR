@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ActivatePortal : MonoBehaviour
 {
-    [SerializeField] private GameObject portalToActivate;
+    [SerializeField] private Collider portalTrigger;
 
     [SerializeField] private int pointsToActivation = 0;
     private int currentPoints = 0;
@@ -19,7 +19,7 @@ public class ActivatePortal : MonoBehaviour
     {
         if(currentPoints >= pointsToActivation)
         {
-            portalToActivate.SetActive(true);
+            portalTrigger.isTrigger = true;
         }
     }
 
