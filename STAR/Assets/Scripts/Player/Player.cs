@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     InputAction _jump;
     InputAction _crouch;
 
+    public CharacterState characterState;
+    public Vector2 playerMovementInput;
+
     private void Start()
     {
         playerCharacter.Initialise();
@@ -52,6 +55,9 @@ public class Player : MonoBehaviour
         playerCharacter.UpdateInput(characterInput);
         playerCharacter.UpdateBody(deltaTime);
 
+        // Adding below for audio source to see what state the player is in
+        characterState = playerCharacter.GetState();
+        playerMovementInput = characterInput.move;
     }
 
     private void LateUpdate()
