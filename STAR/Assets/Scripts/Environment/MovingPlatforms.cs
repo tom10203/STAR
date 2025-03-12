@@ -5,9 +5,12 @@ public class MovingPlatforms : MonoBehaviour
     [SerializeField] private GameObject[] platforms;
     [SerializeField] private float amplitude;
     [SerializeField] private float offset;
+    [SerializeField] private float speed;
     float timer = 0f;
     private void Update()
     {
+        timer += Time.deltaTime * speed;
+
         SetPlatformPositions();
         
     }
@@ -18,7 +21,7 @@ public class MovingPlatforms : MonoBehaviour
         {
             GameObject platform = platforms[i];
             Vector3 platformPosition = platform.transform.position;
-            platform.transform.position = new Vector3(platformPosition.x, platformPosition.y, transform.position.z + amplitude * Mathf.Sin(i * offset * Mathf.PI));
+            platform.transform.position = new Vector3(platformPosition.x, platformPosition.y, transform.position.z + amplitude * Mathf.Sin(timer + i * offset * Mathf.PI));
         }
     }
 

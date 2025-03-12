@@ -42,6 +42,8 @@ public class PlayerShooting : MonoBehaviour
     Vector3 bulletStartPoint;
     Vector3 bulletEndPoint;
 
+    public int targetsHit;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -116,6 +118,7 @@ public class PlayerShooting : MonoBehaviour
                             if (pixel.a > 0)
                             {
                                 layerHit = 1;
+                                targetsHit++;
                             }
                         }
                     }
