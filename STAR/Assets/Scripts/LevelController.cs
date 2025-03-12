@@ -25,11 +25,15 @@ public class LevelController : MonoBehaviour
 
     private AudioSource audio;
 
+    AudioManager audioManager;
+
     void Start()
     {
         Time.timeScale = 1;
         inGameUI = FindAnyObjectByType<InGameUI>();
         audio = transform.parent.GetComponent<AudioSource>();
+
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -81,6 +85,8 @@ public class LevelController : MonoBehaviour
             //Time.timeScale = 0;
             inGameUI.StopTimer();
             LevelCleared();
+
+            audioManager.playSound = false;
         }
     }
     void LevelCleared()

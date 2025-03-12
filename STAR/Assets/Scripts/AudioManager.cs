@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     CharacterState characterState;
     Vector2 playerMovementInput;
 
+    public bool playSound = true;
+
 
     private void Update()
     {
@@ -24,26 +26,33 @@ public class AudioManager : MonoBehaviour
             playerMovementInput = player2.playerMovementInput;
         }
 
-        // Handle sliding audio
-        if (characterState.stance is Stance.Slide)
+        if (playSound)
         {
-            if (!slidingAudioSource.isPlaying)
+            if (characterState.stance is Stance.Slide && characterState.grounded)
             {
-                runningAudioSource.Stop(); // Stop running sound
-                slidingAudioSource.Play(); // Play sliding sound
+                if (!slidingAudioSource.isPlaying)
+                {
+                    runningAudioSource.Stop(); // Stop running sound
+                    slidingAudioSource.Play(); // Play sliding sound
+                }
             }
-        }
-        else if (characterState.stance == Stance.Stand && playerMovementInput != Vector2.zero)
-        {
-            if (!runningAudioSource.isPlaying)
+            else if (characterState.stance == Stance.Stand && playerMovementInput != Vector2.zero && characterState.grounded)
             {
-                slidingAudioSource.Stop(); // Stop sliding sound
-                runningAudioSource.Play(); // Play running sound
+                if (!runningAudioSource.isPlaying)
+                {
+                    slidingAudioSource.Stop(); // Stop sliding sound
+                    runningAudioSource.Play(); // Play running sound
+                }
+            }
+            else
+            {
+                // Stop audio when no movement
+                runningAudioSource.Stop();
+                slidingAudioSource.Stop();
             }
         }
         else
         {
-            // Stop audio when no movement
             runningAudioSource.Stop();
             slidingAudioSource.Stop();
         }
