@@ -52,16 +52,6 @@ public class Player : MonoBehaviour
         playerCharacter.UpdateInput(characterInput);
         playerCharacter.UpdateBody(deltaTime);
 
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            var ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-            if (Physics.Raycast(ray, out var hitInfo))
-            {
-                Teleport(hitInfo.point);
-            }
-        }
-#endif
     }
 
     private void LateUpdate()

@@ -16,12 +16,15 @@ public class Respawn : MonoBehaviour
             if (motor != null)
             {
                 motor.SetPositionAndRotation(respawnPoint.position, respawnPoint.rotation);
+                motor.BaseVelocity = Vector3.zero;
             }
             KinematicCharacterMotor2 motor2 = FindAnyObjectByType<KinematicCharacterMotor2>();
             if (motor2 != null)
             {
                 motor2.SetPositionAndRotation(respawnPoint.position, respawnPoint.rotation);
             }
+
+           
         }
     }
 }

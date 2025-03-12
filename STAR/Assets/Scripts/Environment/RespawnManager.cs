@@ -1,3 +1,5 @@
+using KinematicCharacterController;
+using KinematicCharacterController2;
 using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
@@ -5,19 +7,26 @@ public class RespawnManager : MonoBehaviour
     [SerializeField] public Transform[] respawnPoints;
     [SerializeField] private Respawn fallOffCollider;
 
+    [SerializeField] public Transform testRespawnPoint;
+
     public Transform lastRespawnPoint;
     int i = 0;
 
-    private void Start()
+
+    private void Update()
     {
-        if (respawnPoints.Length == 0)
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            return;
-        }
-        else
-        {
-            lastRespawnPoint = respawnPoints[i];
-            fallOffCollider.respawnPoint = lastRespawnPoint;
+            KinematicCharacterMotor motor = FindAnyObjectByType<KinematicCharacterMotor>();
+            if (motor != null)
+            {
+                motor.SetPositionAndRotation(testRespawnPoint.position, testRespawnPoint.rotation);
+            }
+            KinematicCharacterMotor2 motor2 = FindAnyObjectByType<KinematicCharacterMotor2>();
+            if (motor2 != null)
+            {
+                motor2.SetPositionAndRotation(testRespawnPoint.position, testRespawnPoint.rotation);
+            }
         }
     }
 
@@ -30,8 +39,10 @@ public class RespawnManager : MonoBehaviour
         else
         {
             lastRespawnPoint = respawnPoints[i];
+            lastRespawnPoint.gameObject.SetActive(false);
             fallOffCollider.respawnPoint = lastRespawnPoint;
-            i++; 
+            i++;
+            Debug.Log($"lastRespawnPoint {lastRespawnPoint.name}");
         }
         
     }
