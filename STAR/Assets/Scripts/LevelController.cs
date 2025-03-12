@@ -23,10 +23,13 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] bool isPaused = false;
 
+    private AudioSource audio;
+
     void Start()
     {
         Time.timeScale = 1;
         inGameUI = FindAnyObjectByType<InGameUI>();
+        audio = transform.parent.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -91,24 +94,28 @@ public class LevelController : MonoBehaviour
         {
             levelComplete.SetActive(true);
             levelCompleteText.text = "WELL DONE! YOU CLEARED THE LEVEL, AND IT ONLY TOOK YOU " + inGameUI.currentTime.ToString("f2") + " SECONDS!";
-            
+
             PlayerPrefs.SetFloat("BestTime" + SceneManager.GetActiveScene().name, inGameUI.currentTime);
         }
     }
     public void RestartLevel()
     {
+        audio.PlayOneShot(audio.clip);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void NextLevel()
     {
+        audio.PlayOneShot(audio.clip);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void ReturnToMainMenu()
     {
+        audio.PlayOneShot(audio.clip);
         SceneManager.LoadScene(0);
     }
     void PauseMenu()
     {
+        audio.PlayOneShot(audio.clip);
         isPaused = true;
         pauseMenu.SetActive(true);
         crossHair.SetActive(false);
@@ -136,6 +143,7 @@ public class LevelController : MonoBehaviour
     }
     public void ResumeGame()
     {
+        audio.PlayOneShot(audio.clip);
         isPaused = false;
         pauseMenu.SetActive(false);
         crossHair.SetActive(true);
