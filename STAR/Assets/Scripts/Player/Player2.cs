@@ -14,6 +14,9 @@ public class Player2 : MonoBehaviour
     InputAction _jump;
     InputAction _crouch;
 
+    public CharacterState characterState;
+    public Vector2 playerMovementInput;
+
     private void Start()
     {
         playerCharacter.Initialise();
@@ -62,6 +65,9 @@ public class Player2 : MonoBehaviour
             }
         }
 #endif
+
+        characterState = playerCharacter.GetState();
+        playerMovementInput = characterInput.move;
     }
 
     private void LateUpdate()
