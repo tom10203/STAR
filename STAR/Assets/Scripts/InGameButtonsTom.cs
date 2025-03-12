@@ -10,6 +10,9 @@ public class InGameButtonsTom : MonoBehaviour, IInteractable
     MeshRenderer m_Renderer;
 
     bool interact = true;
+
+    private AudioSource audio;
+
     public void Interact()
     {
         if (interact)
@@ -18,6 +21,9 @@ public class InGameButtonsTom : MonoBehaviour, IInteractable
             {
                 StartCoroutine(DissolveMaterial(go));
             }
+
+            audio = GetComponent<AudioSource>();
+            audio.PlayOneShot(audio.clip);
 
             interact = false;
         }
