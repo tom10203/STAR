@@ -27,7 +27,7 @@ MonoBehaviour:
     overrideShader: {fileID: 0}
     overrideShaderPassIndex: 0
     overrideMode: 1
-    overrideDepthState: 1
+    overrideDepthState: 0
     depthCompareFunction: 8
     enableWrite: 0
     stencilSettings:
@@ -114,7 +114,7 @@ MonoBehaviour:
     AfterOpaque: 0
     Source: 1
     NormalSamples: 1
-    Intensity: 0.4
+    Intensity: 0
     DirectLightingStrength: 0.25
     Radius: 0.3
     Samples: 1
