@@ -42,7 +42,6 @@ public class RespawnManager : MonoBehaviour
             lastRespawnPoint.gameObject.SetActive(false);
             fallOffCollider.respawnPoint = lastRespawnPoint;
             i++;
-            Debug.Log($"lastRespawnPoint {lastRespawnPoint.name}");
         }
         
     }

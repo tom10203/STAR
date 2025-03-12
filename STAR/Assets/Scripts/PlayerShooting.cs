@@ -100,7 +100,6 @@ public class PlayerShooting : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
 
-            Debug.Log($"{AudioListener.volume}");
             if (raycast)
             {
                 if (hit.collider.CompareTag("Target"))
