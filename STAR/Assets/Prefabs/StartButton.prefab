@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7086691918045115293}
   - component: {fileID: 4746018031173175591}
   - component: {fileID: 6356361033872276782}
-  - component: {fileID: 8687573779748072534}
   - component: {fileID: 511165571061900704}
   - component: {fileID: 5278369410736796184}
+  - component: {fileID: 5268182064372442500}
   m_Layer: 0
   m_Name: StartButton
   m_TagString: Untagged
@@ -95,19 +95,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8687573779748072534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419439470628932527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ef65b64f659ba40b981ecfa12aa0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToDeactivate: {fileID: 0}
 --- !u!65 &511165571061900704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -226,3 +213,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5268182064372442500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5419439470628932527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3774dba5ccff94d908b9b62af15dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionSpeed: 1
+  interactionObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  boxColliderToTurnOff: {fileID: 0}
