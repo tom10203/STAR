@@ -15,9 +15,10 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private float targetTimeInSeconds;
     private bool hasTimerStarted = false;
     private bool hasTimerStopped = false;
-
+    [SerializeField] GameObject targetsCanvas, healthCanvas;
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         if (PlayerPrefs.HasKey("BestTime" + SceneManager.GetActiveScene().name))
         {
             targetText.text = "BEST TIME";
@@ -46,7 +47,10 @@ public class InGameUI : MonoBehaviour
             //timerText.color = Color.red;
 
 
-
+        if(currentTime < 0)
+        {
+            currentTime = 0;
+        }
 
 
         //Timer counting up from 00:00
@@ -75,6 +79,18 @@ public class InGameUI : MonoBehaviour
     public void StopTimer()
     {
         hasTimerStopped = true;
+
+        targetTimeText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
+
+        if (targetsCanvas != null)
+        {
+            targetsCanvas.SetActive(false);
+        }
+        if (healthCanvas != null)
+        {
+            healthCanvas.SetActive(false);
+        }
     }
 
     public void AddToTimer(float timeToSave)

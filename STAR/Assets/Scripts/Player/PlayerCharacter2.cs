@@ -57,8 +57,9 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     private PlayerInput playerInput;
     private PlayerShooting playerShooting;
     [SerializeField] private TMP_Text healthText;
-    public GameObject levelFailed, crossHair, failedIcon;
-    public TMP_Text levelFailedText;
+    public GameObject levelFailedDied, crossHair;
+
+    private InGameUI inGameUI;
 
     public void Initialise()
     {
@@ -74,6 +75,8 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
         {
             healthText.text = "HEALTH: " + health;
         }
+
+        inGameUI = FindAnyObjectByType<InGameUI>();
     }
 
     public void UpdateInput(CharacterInput input)
@@ -466,12 +469,11 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
             {
                 crossHair.SetActive(false);
             }
-            if (levelFailed != null)
+            if (levelFailedDied != null)
             {
-                failedIcon.SetActive(false);
-                levelFailedText.text = "YOU DIED! TRY AGAIN?";
-                levelFailed.SetActive(true);
+                levelFailedDied.SetActive(true);
             }
+            inGameUI.StopTimer();
         }
     }
 }

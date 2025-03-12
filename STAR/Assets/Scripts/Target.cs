@@ -43,7 +43,7 @@ public class Target : MonoBehaviour
                 activatePortalScript.AddPortalPoint();
             }
 
-            if (timeToSave > 0f)
+            if (timeToSave < 0f)
             {
                 ParticleSystem plus2 = Instantiate(plus2PE, transform.position, Quaternion.identity);
                 plus2.Play();

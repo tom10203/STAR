@@ -47,7 +47,7 @@ public class MenuManager : MonoBehaviour
         #region Mouse Sensitivity Initialise
         if (!PlayerPrefs.HasKey("mouseSensitivity"))
         {
-            PlayerPrefs.SetFloat("mouseSensitivity", 0.5f); //just using template values here for now, feel free to change this and the slider settings in the inspector based on how it feels in-game
+            PlayerPrefs.SetFloat("mouseSensitivity", 0.1f); //just using template values here for now, feel free to change this and the slider settings in the inspector based on how it feels in-game
         }
         LoadMouse();
         #endregion

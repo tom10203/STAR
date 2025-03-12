@@ -36,6 +36,14 @@ public class RobotEnemy : MonoBehaviour
     [SerializeField] private AudioSource audio;
     private ActivatePortal activatePortalScript;
 
+    private Vector3 lazerPointL = Vector3.zero;
+    private float lazerXAngleL = 0;
+    private float lazerYAngleL = 0;
+
+    private Vector3 lazerPointR = Vector3.zero;
+    private float lazerXAngleR = 0;
+    private float lazerYAngleR = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -83,6 +91,10 @@ public class RobotEnemy : MonoBehaviour
             {
                 dead = true;
                 Die();
+            }
+            else if (dead && laserL.enabled)
+            {
+                DeadLaserEyes();
             }
         }
     }
@@ -189,6 +201,13 @@ public class RobotEnemy : MonoBehaviour
             laserR.SetPosition(1, eyeR.position + (shootpos - eyeR.position).normalized * 300);
             laserL.enabled = true;
             laserR.enabled = true;
+
+            lazerXAngleL = Vector3.SignedAngle(laserL.GetPosition(1) - laserL.GetPosition(0), laserL.transform.forward, laserL.transform.up);
+            lazerYAngleL = Vector3.SignedAngle(laserL.GetPosition(1) - laserL.GetPosition(0), laserL.transform.forward, laserL.transform.right);
+            
+            lazerXAngleR = Vector3.SignedAngle(laserR.GetPosition(1) - laserR.GetPosition(0), laserR.transform.forward, laserR.transform.up);
+            lazerYAngleR = Vector3.SignedAngle(laserR.GetPosition(1) - laserR.GetPosition(0), laserR.transform.forward, laserR.transform.right);
+
             if (shootingTimer < shootingTime)
             {
                 shootingTimer += Time.deltaTime;
@@ -255,5 +274,18 @@ public class RobotEnemy : MonoBehaviour
         laserL.enabled = false;
         laserR.enabled = false;
         audio.Stop();
+    }
+
+    void DeadLaserEyes()
+    {
+        Vector3 thevectorL = Quaternion.AngleAxis(-lazerXAngleL, laserL.transform.up) * laserL.transform.forward;
+        thevectorL = Quaternion.AngleAxis(-lazerYAngleL * 0.5f, laserL.transform.right) * thevectorL;
+        laserL.SetPosition(1, laserL.transform.position + thevectorL * 300);
+        laserL.SetPosition(0, eyeL.position);
+
+        Vector3 thevectorR = Quaternion.AngleAxis(-lazerXAngleR, laserR.transform.up) * laserR.transform.forward;
+        thevectorR = Quaternion.AngleAxis(-lazerYAngleR * 0.5f, laserR.transform.right) * thevectorR;
+        laserR.SetPosition(1, laserR.transform.position + thevectorR * 300);
+        laserR.SetPosition(0, eyeR.position);
     }
 }

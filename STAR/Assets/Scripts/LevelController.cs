@@ -62,6 +62,7 @@ public class LevelController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             //Time.timeScale = 0;
+            inGameUI.StopTimer();
             LevelCleared();
         }
     }

@@ -357,8 +357,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065182621331843913}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000071196425, y: 0, z: 0, w: -1.0000002}
-  m_LocalPosition: {x: 727.2077, y: 1.5000062, z: 4.0006075}
+  m_LocalRotation: {x: 0, y: 0.00000008429371, z: 0, w: -1.0000001}
+  m_LocalPosition: {x: 727.2077, y: 3.6999962, z: 4.0003858}
   m_LocalScale: {x: 331.2, y: 12.1, z: 120}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -433,6 +433,8 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: ef4dd51396949a64ab064f2b98e91e57, type: 3}
   targetAnim: {fileID: 1584461538592857762}
   timeToSave: -2
+  minus2PE: {fileID: 1666163481727977279, guid: 36041f50399807c42bf3a064a7a13a08, type: 3}
+  plus2PE: {fileID: 2829008068587909000, guid: adad76df1834f5641903faa66b5f48d9, type: 3}
 --- !u!82 &2870414783777440875
 AudioSource:
   m_ObjectHideFlags: 0
