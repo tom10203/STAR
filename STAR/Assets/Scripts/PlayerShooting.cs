@@ -71,7 +71,7 @@ public class PlayerShooting : MonoBehaviour
         if (raycast)
         {
             crossHairsCanvas.color = Color.red;
-
+            
             if (hit.collider.CompareTag("Target"))
             {
                 Renderer rend = hit.transform.GetComponent<Renderer>();
@@ -102,6 +102,10 @@ public class PlayerShooting : MonoBehaviour
 
             if (raycast)
             {
+                if (hit.transform.GetComponent<ShootableObject>() != null)
+                {
+                    hit.transform.GetComponent<ShootableObject>().takeDamage(gunDamage);
+                }
                 if (hit.collider.CompareTag("Target"))
                 {
 
