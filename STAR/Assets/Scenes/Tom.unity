@@ -14494,6 +14494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MetalBox1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22654,6 +22658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MetalBox1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23477,6 +23485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: laser
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b12d637c4f4a854fb19f9fdf9e06678, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1746654310787607633, guid: 0b12d637c4f4a854fb19f9fdf9e06678, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -23484,6 +23496,10 @@ PrefabInstance:
     - target: {fileID: 3849762623622064168, guid: 0b12d637c4f4a854fb19f9fdf9e06678, type: 3}
       propertyPath: m_Name
       value: beam
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849762623622064168, guid: 0b12d637c4f4a854fb19f9fdf9e06678, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6732398567079961185, guid: 0b12d637c4f4a854fb19f9fdf9e06678, type: 3}
       propertyPath: m_LocalScale.x
@@ -25178,6 +25194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MetalBox1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26686,6 +26706,10 @@ PrefabInstance:
     - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
       propertyPath: m_Name
       value: MetalBox1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32684,6 +32708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MetalBox1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32910,6 +32938,10 @@ PrefabInstance:
     - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
       propertyPath: m_Name
       value: MetalBox1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695918679711460293, guid: f0a5b16e394a28245a13edd0ea075f75, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33383,6 +33415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: laserPlane
       objectReference: {fileID: 0}
+    - target: {fileID: 5972487431968930768, guid: c2264a691be6c484d844b67f5756b340, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6460792998674194794, guid: c2264a691be6c484d844b67f5756b340, type: 3}
       propertyPath: m_LocalScale.x
       value: 100
@@ -33430,6 +33466,10 @@ PrefabInstance:
     - target: {fileID: 6460792998674194794, guid: c2264a691be6c484d844b67f5756b340, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732393349447069353, guid: c2264a691be6c484d844b67f5756b340, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
