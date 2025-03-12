@@ -36069,6 +36069,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5566653014814803673, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a4c973b0fd319142ac3b71c55a337fd, type: 3}
+    - target: {fileID: 5566653014814803673, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a4c973b0fd319142ac3b71c55a337fd, type: 3}
     - target: {fileID: 7022908706521823024, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
       propertyPath: m_Layer
       value: 10
