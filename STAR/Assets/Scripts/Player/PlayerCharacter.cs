@@ -507,6 +507,7 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         {
             playerInput.enabled = false;
             playerShooting.enabled = false;
+            Time.timeScale = 0f;
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
