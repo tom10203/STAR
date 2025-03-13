@@ -103,6 +103,16 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         _uncrouchOverlapResults = new Collider[8];
 
         _storedGroundNormal = motor.CharacterUp;
+
+        playerInput = transform.parent.GetComponent<PlayerInput>();
+        playerShooting = transform.parent.GetComponent<PlayerShooting>();
+
+        if (healthText != null)
+        {
+            healthText.text = "HEALTH: " + health;
+        }
+
+        inGameUI = FindAnyObjectByType<InGameUI>();
     }
 
     public void UpdateInput(CharacterInput input)
