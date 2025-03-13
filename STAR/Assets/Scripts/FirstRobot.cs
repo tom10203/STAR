@@ -1,7 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class FirstRobot : MonoBehaviour
 {
