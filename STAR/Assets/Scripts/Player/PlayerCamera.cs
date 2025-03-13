@@ -32,4 +32,9 @@ public class PlayerCamera : MonoBehaviour
         _eulerAngles = new Vector3(eulerAnglesX, _eulerAngles.y, _eulerAngles.z);
         transform.eulerAngles = _eulerAngles;
     }
+
+    public void SetMouseSensitivity(float newSensitivity)
+    {
+        sensitivity = newSensitivity;
+    }
 }

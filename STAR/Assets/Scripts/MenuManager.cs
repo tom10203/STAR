@@ -20,6 +20,8 @@ public class MenuManager : MonoBehaviour
 
     private AudioSource buttonAudio;
 
+    private PlayerCamera playerCam;
+
     private void Awake()
     {
         if (Instance != null)
@@ -31,6 +33,7 @@ public class MenuManager : MonoBehaviour
     }
     void Start()
     {
+        AssignSliders();
         #region Volume Initialise
         if (!PlayerPrefs.HasKey("masterVolume"))
         {
@@ -63,11 +66,11 @@ public class MenuManager : MonoBehaviour
     }
     public void LoadVolume()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        volumeSlider.value = PlayerPrefs.GetFloat("masterVolume", 0.8f);
         audioMixer.SetFloat("MasterVol", ((100 * volumeSlider.value) - 80f));
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.8f);
         audioMixer.SetFloat("MusicVol", ((100 * musicVolumeSlider.value) - 80f));
-        sfxVolumeSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.8f);
         audioMixer.SetFloat("SFXVol", ((100 * sfxVolumeSlider.value) - 80f));
     }
     public void SaveVolume()
@@ -87,11 +90,15 @@ public class MenuManager : MonoBehaviour
     }
     public void LoadMouse()
     {
-        mouseSlider.value = PlayerPrefs.GetFloat("mouseSensitivity");
+        mouseSlider.value = PlayerPrefs.GetFloat("mouseSensitivity", 0.1f);
     }
     public void SaveMouse()
     {
         PlayerPrefs.SetFloat("mouseSensitivity", mouseSlider.value);
+        if (playerCam != null)
+        {
+            playerCam.SetMouseSensitivity(mouseSlider.value);
+        }
     }
     #endregion
     #region Level Buttons
@@ -117,4 +124,18 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(4);
     }
     #endregion
+
+    public void AssignSliders()
+    {
+        GameObject playerCameraObj = GameObject.FindWithTag("PlayerCamera");
+        if (playerCameraObj)
+        {
+            playerCam = playerCameraObj.GetComponent<PlayerCamera>();
+        }
+        volumeSlider = GameObject.FindWithTag("VolumeSlider").GetComponent<Slider>();
+        musicVolumeSlider = GameObject.FindWithTag("MusicVolumeSlider").GetComponent<Slider>();
+        sfxVolumeSlider = GameObject.FindWithTag("SFXVolumeSlider").GetComponent<Slider>();
+        mouseSlider = GameObject.FindWithTag("MouseSlider").GetComponent<Slider>();
+        mouseSlider.transform.parent.gameObject.SetActive(false);
+    }
 }
