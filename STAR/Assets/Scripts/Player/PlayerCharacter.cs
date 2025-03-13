@@ -1,5 +1,7 @@
 using KinematicCharacterController;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum CrouchInput
 {
@@ -84,6 +86,14 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     Vector3 _storedGroundNormal;
     int _storedGroundLayer = 0;
 
+
+    [SerializeField] private TMP_Text healthText;
+
+    private PlayerInput playerInput;
+    private PlayerShooting playerShooting;
+    public GameObject levelFailedDied, crossHair;
+
+    private InGameUI inGameUI;
 
     public void Initialise()
     {
@@ -477,6 +487,30 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     {
         //Debug.Log("Player got hit for " + damage + " damage");
         health -= damage;
+
+        if (healthText != null)
+        {
+            healthText.text = "HEALTH: " + health;
+        }
+
+        if (health <= 0)
+        {
+            playerInput.enabled = false;
+            playerShooting.enabled = false;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (crossHair != null)
+            {
+                crossHair.SetActive(false);
+            }
+            if (levelFailedDied != null)
+            {
+                levelFailedDied.SetActive(true);
+            }
+            inGameUI.StopTimer();
+        }
     }
 
 }

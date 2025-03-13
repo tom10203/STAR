@@ -53,7 +53,7 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
     private bool _increaseTimeSinceLanded;
     private Collider[] _uncrouchOverlapResults;
 
-    private int health = 10;
+    private int health = 100;
     private PlayerInput playerInput;
     private PlayerShooting playerShooting;
     [SerializeField] private TMP_Text healthText;
