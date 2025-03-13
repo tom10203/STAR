@@ -8,7 +8,7 @@ public class LevelController : MonoBehaviour
     //This script should only be attached to the empty LevelControllerObject (child of the exit portal) in each level!
 
     //public float targetTime, currentTime; //This is just pseudo-code for now. I know Steve's working on the timer, so once he's done we can integrate it into this script by using GameObject.FindFirstObjectByType or whatever works best
-    public GameObject levelFailed, levelComplete, pauseMenu, crossHair;
+    public GameObject levelFailed, levelComplete, pauseMenu, crossHair, settingsMenu;
     public TMP_Text levelCompleteText;
     private InGameUI inGameUI;
     public GameObject player;
@@ -152,6 +152,7 @@ public class LevelController : MonoBehaviour
         audio.PlayOneShot(audio.clip);
         isPaused = false;
         pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         crossHair.SetActive(true);
         Time.timeScale = 1;
         Cursor.visible = false;
