@@ -61,6 +61,8 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
 
     private InGameUI inGameUI;
 
+    AudioManager audioManager;
+ 
     public void Initialise()
     {
         motor.CharacterController = this;
@@ -77,6 +79,8 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
         }
 
         inGameUI = FindAnyObjectByType<InGameUI>();
+
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     public void UpdateInput(CharacterInput input)
@@ -464,6 +468,11 @@ public class PlayerCharacter2 : MonoBehaviour, ICharacterController
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            if (audioManager != null)
+            {
+                audioManager.playSound = false;
+            }
 
             if (crossHair != null)
             {

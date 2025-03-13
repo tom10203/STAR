@@ -85,7 +85,10 @@ public class LevelController : MonoBehaviour
             inGameUI.StopTimer();
             LevelCleared();
 
-            audioManager.playSound = false;
+            if (audioManager != null)
+            {
+                audioManager.playSound = false;
+            }
         }
     }
     void LevelCleared()
