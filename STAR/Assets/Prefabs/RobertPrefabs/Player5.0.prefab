@@ -5157,6 +5157,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4249369467293904789, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
+      propertyPath: m_TagString
+      value: PlayerCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 4482448605404015521, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -44.467
@@ -5429,6 +5433,7 @@ MonoBehaviour:
   player2: {fileID: 565459515906560316}
   runningAudioSource: {fileID: 5556837500346795746}
   slidingAudioSource: {fileID: 7923948666538093691}
+  playSound: 1
 --- !u!82 &5556837500346795746
 AudioSource:
   m_ObjectHideFlags: 0

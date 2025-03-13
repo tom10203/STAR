@@ -8,6 +8,11 @@ TagManager:
   - Enemy
   - EnemyHead
   - GatlingBullet
+  - MouseSlider
+  - VolumeSlider
+  - MusicVolumeSlider
+  - SFXVolumeSlider
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX
