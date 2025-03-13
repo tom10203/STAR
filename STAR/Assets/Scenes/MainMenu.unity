@@ -933,8 +933,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1257736666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2028,7 +2028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &690411214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2573,8 +2573,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1797234667}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2706,7 +2706,7 @@ RectTransform:
   m_Father: {fileID: 1460335420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2935,7 +2935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1010916745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3428,7 +3428,7 @@ RectTransform:
   m_Father: {fileID: 702234690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3564,8 +3564,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1596413547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3627,7 +3627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1187405535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5585,14 +5585,15 @@ MonoBehaviour:
     Hendry. All of us have contributed to the general coding and level design of
     this game.\n\nROLES:\nStephen - Level 3\nThomas - Character Controller, Level
     2\nAlex - Music and SFX, Crosshair and Title/Level Finished Text, Level 1\nRobert
-    - SFX, Level 4 (incl. Cutscene)\n\nASSETS USED:\nFonts - dafont and TextStudio\r\nSFX
-    - pixabay (most of them edited/remixed by Alex)\r\r\nEnvironment - Blend Pixel
-    Studio (Low Poly Sci-Fi Station Pack)\nGalting Gun Enemy - Richard Lester (Free
-    Sci Fi Gatling Gun - Tower Defence)\nRobot Enemy - Baydinman (Robot 1)\nEnding
-    Cutscene Player Model - Batewar (Bodyguards) \nGun - MAC (MAC Sci-Fi Sniper Rifle)\n\nWe'd
-    also like to thank Akshat Sinha and the team at Tech Educators for helping us
-    to learn Unity and improve our programming skills.\n\nFinally, we'd like to thank
-    YOU (yes, you! No, not you, the fella next to you) for playing our Capstone Project!"
+    - Robot AI, SFX, Level 4 (incl. Cutscene)\n\nASSETS USED:\nFonts - dafont and
+    TextStudio\r\nSFX - pixabay (most of them edited/remixed by Alex)\r\r\nEnvironment
+    - Blend Pixel Studio (Low Poly Sci-Fi Station Pack)\nGalting Gun Enemy - Richard
+    Lester (Free Sci Fi Gatling Gun - Tower Defence)\nRobot Enemy - Baydinman (Robot
+    1)\nEnding Cutscene Player Model - Batewar (Bodyguards) \nGun - MAC (MAC Sci-Fi
+    Sniper Rifle)\n\nWe'd also like to thank Akshat Sinha and the team at Tech Educators
+    for helping us to learn Unity and improve our programming skills.\n\nFinally,
+    we'd like to thank YOU (yes, you! No, not you, the fella next to you) for playing
+    our Capstone Project!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90678024692f50942ae43c13028612ad, type: 2}
   m_sharedMaterial: {fileID: -6654635322904660556, guid: 90678024692f50942ae43c13028612ad, type: 2}
@@ -7555,7 +7556,7 @@ RectTransform:
   m_Father: {fileID: 1368200235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7766,7 +7767,7 @@ RectTransform:
   m_Father: {fileID: 991720136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7840,8 +7841,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1375290443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8, y: 0}
-  m_AnchorMax: {x: 0.8, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -34,14 +34,18 @@ public class Target : MonoBehaviour
             audio.PlayOneShot(hitSound, 1f);
             targetAnim.SetTrigger("TargetHit");
             inGameUI.AddToTimer(timeToSave);
-            if (activatePortalScript != null)
-            {
-                activatePortalScript.AddPortalPoint();
-            }
 
-            if (targetsDeactivateDoor != null)
+            if (timeToSave > 0)
             {
-                targetsDeactivateDoor.AddDoorPoint();
+                if (activatePortalScript != null)
+                {
+                    activatePortalScript.AddPortalPoint();
+                }
+
+                if (targetsDeactivateDoor != null)
+                {
+                    targetsDeactivateDoor.AddDoorPoint();
+                }
             }
 
             if (timeToSave < 0f)

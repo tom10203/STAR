@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tom.unity
     guid: fd83a852d368d6640bd7861ca20463d1
   - enabled: 1
+    path: Assets/Scenes/Stephen.30.unity
+    guid: 7ce5fdb4472d49348a3f1a3c961c5906
+  - enabled: 1
     path: Assets/Scenes/Robert.unity
     guid: a299cacf7c2a0ea4ca9f91ae5a2dacdd
   m_configObjects:
