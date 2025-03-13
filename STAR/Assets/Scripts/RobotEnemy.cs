@@ -186,7 +186,7 @@ public class RobotEnemy : MonoBehaviour
                     {
                         if (hit2.collider.CompareTag("Player"))
                         {
-                            player.TakeDamage(1);
+                            player.TakeDamage(5);
                         }
                     }
                 }

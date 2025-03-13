@@ -20,13 +20,8 @@ public class Target : MonoBehaviour
     void Start()
     {
         inGameUI = FindAnyObjectByType<InGameUI>();
+        activatePortalScript = FindAnyObjectByType<ActivatePortal>();
         targetsDeactivateDoor = FindAnyObjectByType<TargetsDeactivateDoor>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void TargetHit()

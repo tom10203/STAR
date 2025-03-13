@@ -25018,6 +25018,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5369707423187632841, guid: 6398cd0329c41c342bf0e28c28bcb08f, type: 3}
+      propertyPath: m_text
+      value: 'HEALTH: 100
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 5478385112195339852, guid: 6398cd0329c41c342bf0e28c28bcb08f, type: 3}
       propertyPath: m_Name
       value: HealthCanvas
