@@ -2,7 +2,6 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.Profiling;
 
 public class LevelController : MonoBehaviour
 {
@@ -119,6 +118,7 @@ public class LevelController : MonoBehaviour
         audio.PlayOneShot(audio.clip);
         SceneManager.LoadScene(0);
     }
+    #region Pause Functions
     void PauseMenu()
     {
         audio.PlayOneShot(audio.clip);
@@ -175,4 +175,5 @@ public class LevelController : MonoBehaviour
         shooting.enabled = true;
         playerCamera.enabled = true;
     }
+    #endregion
 }
