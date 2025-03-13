@@ -6008,6 +6008,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3195367214241102655, guid: 15e45ab81816ac744af2009bf27b1fd6, type: 3}
   m_PrefabInstance: {fileID: 1054034307}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &737972900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8152372223655274349, guid: 4496571d820b4cf409a265d4fee550cc, type: 3}
+  m_PrefabInstance: {fileID: 1772063587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32c15dbca5203846b9fd8e3cd8766c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &742186973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 707905024169562972, guid: 8ed6b2e85e0685448869cd9c1a160583, type: 3}
@@ -16923,6 +16934,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas New
       objectReference: {fileID: 0}
+    - target: {fileID: 3563461897113066369, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 737972900}
+    - target: {fileID: 3563461897113066369, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 3595710252720356473, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17054,6 +17073,14 @@ PrefabInstance:
     - target: {fileID: 7937929355435775064, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560801401529849446, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 737972900}
+    - target: {fileID: 8560801401529849446, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
