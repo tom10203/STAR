@@ -3,15 +3,17 @@ using UnityEngine;
 public class ShootableObject : MonoBehaviour
 {
     public int health;
-    public GameObject gattlingGun;
+    public GatlingGun gattlingGun;
 
 
     private void Update()
     {
         if (health <= 0)
         {
-            gattlingGun.GetComponent<GatlingGun>().enabled = false;
-            //troy(gattlingGun);
+            gattlingGun.enabled = false;
+            gattlingGun.muzzelFlash.gameObject.SetActive(false);
+
+            //Destroy(gattlingGun);
         }
     }
 
