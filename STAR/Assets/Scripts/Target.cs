@@ -10,6 +10,7 @@ public class Target : MonoBehaviour
     [SerializeField] float timeToSave = 2f;
     private InGameUI inGameUI;
     private ActivatePortal activatePortalScript;
+    private TargetsDeactivateDoor targetsDeactivateDoor;
 
     [SerializeField] private ParticleSystem minus2PE;
     [SerializeField] private ParticleSystem plus2PE;
@@ -19,7 +20,7 @@ public class Target : MonoBehaviour
     void Start()
     {
         inGameUI = FindAnyObjectByType<InGameUI>();
-        activatePortalScript = FindAnyObjectByType<ActivatePortal>();
+        targetsDeactivateDoor = FindAnyObjectByType<TargetsDeactivateDoor>();
     }
 
     // Update is called once per frame
@@ -41,6 +42,11 @@ public class Target : MonoBehaviour
             if (activatePortalScript != null)
             {
                 activatePortalScript.AddPortalPoint();
+            }
+
+            if (targetsDeactivateDoor != null)
+            {
+                targetsDeactivateDoor.AddDoorPoint();
             }
 
             if (timeToSave < 0f)
