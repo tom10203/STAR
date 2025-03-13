@@ -73,7 +73,7 @@ public class GatlingGun : MonoBehaviour
     {
        
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         canFire = true;
         yield return new WaitForSeconds(5);
         canFire = false;
