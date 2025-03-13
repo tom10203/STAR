@@ -25,8 +25,9 @@ public class GatlingGun : MonoBehaviour
     // Used to start and stop the turret firing
     bool canFire = false;
     bool playerInSight;
+    public AudioSource audioSource;
 
-    
+
     void Start()
     {
         // Set the firing range distance
@@ -101,6 +102,7 @@ public class GatlingGun : MonoBehaviour
             if (!muzzelFlash.isPlaying)
             {
                 muzzelFlash.Play();
+                audioSource.Play();
             }
         }
         else
@@ -112,6 +114,7 @@ public class GatlingGun : MonoBehaviour
             if (muzzelFlash.isPlaying)
             {
                 muzzelFlash.Stop();
+                audioSource.Stop();
             }
         }
     }
