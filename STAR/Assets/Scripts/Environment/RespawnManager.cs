@@ -13,22 +13,6 @@ public class RespawnManager : MonoBehaviour
     int i = 0;
 
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            KinematicCharacterMotor motor = FindAnyObjectByType<KinematicCharacterMotor>();
-            if (motor != null)
-            {
-                motor.SetPositionAndRotation(testRespawnPoint.position, testRespawnPoint.rotation);
-            }
-            KinematicCharacterMotor2 motor2 = FindAnyObjectByType<KinematicCharacterMotor2>();
-            if (motor2 != null)
-            {
-                motor2.SetPositionAndRotation(testRespawnPoint.position, testRespawnPoint.rotation);
-            }
-        }
-    }
 
     public void SetRespawnPoint()
     {
@@ -42,7 +26,6 @@ public class RespawnManager : MonoBehaviour
             lastRespawnPoint.gameObject.SetActive(false);
             fallOffCollider.respawnPoint = lastRespawnPoint;
             i++;
-            Debug.Log($"lastRespawnPoint {lastRespawnPoint.name}");
         }
         
     }

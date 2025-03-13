@@ -22,6 +22,7 @@ public class Respawn : MonoBehaviour
             if (motor2 != null)
             {
                 motor2.SetPositionAndRotation(respawnPoint.position, respawnPoint.rotation);
+                motor2.BaseVelocity = Vector3.zero;
             }
 
            

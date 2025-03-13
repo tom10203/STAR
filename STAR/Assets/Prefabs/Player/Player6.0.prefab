@@ -5284,6 +5284,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4249369467293904789, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
+      propertyPath: m_TagString
+      value: PlayerCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 4482448605404015521, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -44.467
@@ -5346,7 +5350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5872036912053433522, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6491310195205429344, guid: f63b1cb818968bf44b946e88111231cb, type: 3}
       propertyPath: m_Name

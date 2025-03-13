@@ -2,14 +2,13 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.Profiling;
 
 public class LevelController : MonoBehaviour
 {
     //This script should only be attached to the empty LevelControllerObject (child of the exit portal) in each level!
 
     //public float targetTime, currentTime; //This is just pseudo-code for now. I know Steve's working on the timer, so once he's done we can integrate it into this script by using GameObject.FindFirstObjectByType or whatever works best
-    public GameObject levelFailed, levelComplete, pauseMenu, crossHair;
+    public GameObject levelFailed, levelComplete, pauseMenu, crossHair, settingsMenu;
     public TMP_Text levelCompleteText;
     private InGameUI inGameUI;
     public GameObject player;
@@ -25,11 +24,15 @@ public class LevelController : MonoBehaviour
 
     private AudioSource audio;
 
+    AudioManager audioManager;
+
     void Start()
     {
         Time.timeScale = 1;
         inGameUI = FindAnyObjectByType<InGameUI>();
         audio = transform.parent.GetComponent<AudioSource>();
+
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -81,6 +84,8 @@ public class LevelController : MonoBehaviour
             //Time.timeScale = 0;
             inGameUI.StopTimer();
             LevelCleared();
+
+            audioManager.playSound = false;
         }
     }
     void LevelCleared()
@@ -113,6 +118,7 @@ public class LevelController : MonoBehaviour
         audio.PlayOneShot(audio.clip);
         SceneManager.LoadScene(0);
     }
+    #region Pause Functions
     void PauseMenu()
     {
         audio.PlayOneShot(audio.clip);
@@ -146,6 +152,7 @@ public class LevelController : MonoBehaviour
         audio.PlayOneShot(audio.clip);
         isPaused = false;
         pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         crossHair.SetActive(true);
         Time.timeScale = 1;
         Cursor.visible = false;
@@ -169,4 +176,5 @@ public class LevelController : MonoBehaviour
         shooting.enabled = true;
         playerCamera.enabled = true;
     }
+    #endregion
 }
