@@ -18374,6 +18374,74 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7041284011079105010, guid: 7f974c075bb137c4b91ef05a7dbbb089, type: 3}
+--- !u!1001 &979126145
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1161175403281341812, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_Name
+      value: TutorialPoster
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 124.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -238.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988921943736222175, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167205173605645756, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      propertyPath: m_text
+      value: 'WELCOME TO THE TRAINING RANGE!
+
+
+        SHOOT ALL THE RED TARGETS
+        TO OPEN THE LASER DOOR'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9110400645318970294, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 03847dbb6e084af4c967e3660630ace0, type: 3}
 --- !u!1 &980376074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6752218882962566315, guid: 8ed6b2e85e0685448869cd9c1a160583, type: 3}
@@ -43666,3 +43734,4 @@ SceneRoots:
   - {fileID: 1019472936}
   - {fileID: 316731417}
   - {fileID: 1700379204}
+  - {fileID: 979126145}
