@@ -81,11 +81,14 @@ public class LevelController : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
             inGameUI.StopTimer();
             LevelCleared();
 
-            audioManager.playSound = false;
+            if (audioManager != null)
+            {
+                audioManager.playSound = false;
+            }
         }
     }
     void LevelCleared()

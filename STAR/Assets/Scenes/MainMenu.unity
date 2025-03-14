@@ -5585,14 +5585,15 @@ MonoBehaviour:
     Hendry. All of us have contributed to the general coding and level design of
     this game.\n\nROLES:\nStephen - Level 3\nThomas - Character Controller, Level
     2\nAlex - Music and SFX, Crosshair and Title/Level Finished Text, Level 1\nRobert
-    - SFX, Level 4 (incl. Cutscene)\n\nASSETS USED:\nFonts - dafont and TextStudio\r\nSFX
-    - pixabay (most of them edited/remixed by Alex)\r\r\nEnvironment - Blend Pixel
-    Studio (Low Poly Sci-Fi Station Pack)\nGalting Gun Enemy - Richard Lester (Free
-    Sci Fi Gatling Gun - Tower Defence)\nRobot Enemy - Baydinman (Robot 1)\nEnding
-    Cutscene Player Model - Batewar (Bodyguards) \nGun - MAC (MAC Sci-Fi Sniper Rifle)\n\nWe'd
-    also like to thank Akshat Sinha and the team at Tech Educators for helping us
-    to learn Unity and improve our programming skills.\n\nFinally, we'd like to thank
-    YOU (yes, you! No, not you, the fella next to you) for playing our Capstone Project!"
+    - Robot AI, SFX, Level 4 (incl. Cutscene)\n\nASSETS USED:\nFonts - dafont and
+    TextStudio\r\nSFX - pixabay (most of them edited/remixed by Alex)\r\r\nEnvironment
+    - Blend Pixel Studio (Low Poly Sci-Fi Station Pack)\nGalting Gun Enemy - Richard
+    Lester (Free Sci Fi Gatling Gun - Tower Defence)\nRobot Enemy - Baydinman (Robot
+    1)\nEnding Cutscene Player Model - Batewar (Bodyguards) \nGun - MAC (MAC Sci-Fi
+    Sniper Rifle)\n\nWe'd also like to thank Akshat Sinha and the team at Tech Educators
+    for helping us to learn Unity and improve our programming skills.\n\nFinally,
+    we'd like to thank YOU (yes, you! No, not you, the fella next to you) for playing
+    our Capstone Project!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90678024692f50942ae43c13028612ad, type: 2}
   m_sharedMaterial: {fileID: -6654635322904660556, guid: 90678024692f50942ae43c13028612ad, type: 2}

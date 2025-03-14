@@ -3,15 +3,20 @@ using UnityEngine;
 public class ShootableObject : MonoBehaviour
 {
     public int health;
-    public GameObject gattlingGun;
+    public GatlingGun gattlingGun;
+    public ParticleSystem smoke;
 
 
     private void Update()
     {
         if (health <= 0)
         {
-            gattlingGun.GetComponent<GatlingGun>().enabled = false;
-            //troy(gattlingGun);
+            gattlingGun.enabled = false;
+            gattlingGun.muzzelFlash.gameObject.SetActive(false);
+            gattlingGun.audioSource.enabled = false;
+            smoke.gameObject.SetActive(true);
+
+            //Destroy(gattlingGun);
         }
     }
 

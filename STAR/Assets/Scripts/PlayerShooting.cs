@@ -108,6 +108,7 @@ public class PlayerShooting : MonoBehaviour
                 if (hit.transform.GetComponent<ShootableObject>() != null)
                 {
                     hit.transform.GetComponent<ShootableObject>().takeDamage(gunDamage);
+                    Destroy(Instantiate(bulletHitPE, hit.point, Quaternion.identity),5);
                 }
                 if (hit.collider.CompareTag("Target"))
                 {

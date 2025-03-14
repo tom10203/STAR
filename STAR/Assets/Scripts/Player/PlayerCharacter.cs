@@ -1,5 +1,7 @@
 using KinematicCharacterController;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum CrouchInput
 {
@@ -85,6 +87,16 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     int _storedGroundLayer = 0;
 
 
+    [SerializeField] private TMP_Text healthText;
+
+    private PlayerInput playerInput;
+    private PlayerShooting playerShooting;
+    public GameObject levelFailedDied, crossHair;
+
+    private InGameUI inGameUI;
+
+    AudioManager audioManager;
+
     public void Initialise()
     {
         motor.CharacterController = this;
@@ -93,6 +105,18 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
         _uncrouchOverlapResults = new Collider[8];
 
         _storedGroundNormal = motor.CharacterUp;
+
+        playerInput = transform.parent.GetComponent<PlayerInput>();
+        playerShooting = transform.parent.GetComponent<PlayerShooting>();
+
+        if (healthText != null)
+        {
+            healthText.text = "HEALTH: " + health;
+        }
+
+        inGameUI = FindAnyObjectByType<InGameUI>();
+
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     public void UpdateInput(CharacterInput input)
@@ -477,6 +501,36 @@ public class PlayerCharacter : MonoBehaviour, ICharacterController
     {
         //Debug.Log("Player got hit for " + damage + " damage");
         health -= damage;
+
+        if (healthText != null)
+        {
+            healthText.text = "HEALTH: " + health;
+        }
+
+        if (health <= 0)
+        {
+            playerInput.enabled = false;
+            playerShooting.enabled = false;
+            Time.timeScale = 0f;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (audioManager != null)
+            {
+                audioManager.playSound = false;
+            }
+
+            if (crossHair != null)
+            {
+                crossHair.SetActive(false);
+            }
+            if (levelFailedDied != null)
+            {
+                levelFailedDied.SetActive(true);
+            }
+            inGameUI.StopTimer();
+        }
     }
 
 }
