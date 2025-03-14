@@ -7,20 +7,40 @@ public class SettingsInGame : MonoBehaviour
     {
         if (MenuManager.Instance != null)
         {
-            MenuManager.Instance.AssignSliders();
-            MenuManager.Instance.LoadVolume();
-            MenuManager.Instance.LoadMouse();
+            //MenuManager.Instance.AssignSliders();
+            //MenuManager.Instance.LoadVolume();
+            //MenuManager.Instance.LoadMouse();
         }
-        this.gameObject.SetActive(false);
+        else
+        {
+            Debug.Log("no menumanager");
+            this.gameObject.SetActive(false);
+        }
     }
     #region Volume Functions
-    public void ChangeVolume()
+
+    public void ChangeMasterVolume()
     {
         if (MenuManager.Instance != null)
         {
-            MenuManager.Instance.SaveVolume();
+            MenuManager.Instance.ChangeMasterVolume();
         }
     }
+    public void ChangeMusicVolume()
+    {
+        if (MenuManager.Instance != null)
+        {
+            MenuManager.Instance.ChangeMusicVolume();
+        }
+    }
+    public void ChangeSFXVolume()
+    {
+        if (MenuManager.Instance != null)
+        {
+            MenuManager.Instance.ChangeSFXVolume();
+        }
+    }
+
     #endregion
     #region Mouse Sensitivity Functions
     public void ChangeMouse()

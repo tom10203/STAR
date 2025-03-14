@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2095773909948570734, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMasterVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 2818980530691046943, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -393,6 +397,14 @@ PrefabInstance:
     - target: {fileID: 7937929355435775064, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012750109207504207, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119538261080031887, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMusicVolume
       objectReference: {fileID: 0}
     - target: {fileID: 8195223797480087559, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -28745,6 +28757,14 @@ PrefabInstance:
       propertyPath: levelFailedDied
       value: 
       objectReference: {fileID: 1511903159}
+    - target: {fileID: 5556837500346795746, guid: 3f2d0c45a8625eb429e82e34b129c581, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b55298ffe36cd04c9a8f0cb98c7ad57, type: 3}
+    - target: {fileID: 5556837500346795746, guid: 3f2d0c45a8625eb429e82e34b129c581, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b55298ffe36cd04c9a8f0cb98c7ad57, type: 3}
     - target: {fileID: 7203049183652637203, guid: 3f2d0c45a8625eb429e82e34b129c581, type: 3}
       propertyPath: m_Name
       value: Player5.0

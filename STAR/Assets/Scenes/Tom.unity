@@ -23171,6 +23171,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2095773909948570734, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMasterVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 2651097070556187994, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -23386,6 +23390,14 @@ PrefabInstance:
     - target: {fileID: 7937929355435775064, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012750109207504207, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119538261080031887, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMusicVolume
       objectReference: {fileID: 0}
     - target: {fileID: 8195223797480087559, guid: a23f2d3e344a2f649a66f150473cc13f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -28595,7 +28607,7 @@ AudioSource:
   m_GameObject: {fileID: 351461263}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6101141394293015399, guid: a0150abf26fccc44f900a21cc9e04aa2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 97898dcd45e6fde429f14550f13486bc, type: 3}
   m_Resource: {fileID: 8300000, guid: 97898dcd45e6fde429f14550f13486bc, type: 3}
   m_PlayOnAwake: 0
@@ -35388,6 +35400,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5566653014814803673, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 6101141394293015399, guid: a0150abf26fccc44f900a21cc9e04aa2, type: 2}
     - target: {fileID: 7022908706521823024, guid: d3e082c1d9886dc459e945c0b005ba69, type: 3}
       propertyPath: m_Layer
       value: 10
