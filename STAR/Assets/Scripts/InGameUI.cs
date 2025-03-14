@@ -18,7 +18,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] GameObject targetsCanvas, healthCanvas;
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         if (PlayerPrefs.HasKey("BestTime" + SceneManager.GetActiveScene().name))
         {
             targetText.text = "BEST TIME";
